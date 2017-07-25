@@ -82,7 +82,7 @@ garage_tabsAdminMenu("gest_doc.php");
 
 doc_info('Documentation');
 
-	$form = new XoopsThemeForm(_AM_DOC_MODIFICATION,'mdoc',"gest_doc.php?op=update&id_doc='".$id_doc."'",'post');
+	$form = new XoopsThemeForm(_AM_DOC_MODIFICATION,'mdoc',"gest_doc.php?op=update&id_doc='".$id_doc."'",'post', true);
 	$form -> addElement(new XoopsFormHidden('old_id_doc', $id_doc));	
 	$form -> addElement(new XoopsFormText(_AM_DOC,'id_doc',20,255, $id_doc));	
 	$form -> addElement(new XoopsFormDHTMLTextArea(_AM_DOC_FR,'doc_fr', $doc_fr,20,80));	
@@ -145,7 +145,7 @@ doc_info('Documentation');
 		    }
 		echo '</tr></table><br />';
 /*
-	$form = new XoopsThemeForm(_AM_DOC_CREATION,'cdoc','gest_doc.php?op=creatdoc','post');
+	$form = new XoopsThemeForm(_AM_DOC_CREATION,'cdoc','gest_doc.php?op=creatdoc','post', true);
 	$form -> addElement(new XoopsFormText(_AM_DOC,'id_doc',20,255, ''));	
 	$form -> addElement(new XoopsFormDHTMLTextArea(_AM_DOC_FR,'doc_fr', '',20,80));	
 	$form -> addElement(new XoopsFormButton('', 'submit', _AM_CREATING, 'submit'));

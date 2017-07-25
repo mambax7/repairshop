@@ -76,7 +76,7 @@ garage_tabsAdminMenu("cat_piece.php");
     doc_info('Cat_Piece');
 
 
-	$form = new XoopsThemeForm(_AM_CAT_MODIFICATION,'mcat',"cat_piece.php?op=update&id='".$id."'",'post');
+	$form = new XoopsThemeForm(_AM_CAT_MODIFICATION,'mcat',"cat_piece.php?op=update&id='".$id."'",'post', true);
 	$form -> addElement(new XoopsFormText(_AM_CAT_NOM,'nom',50,255, $nom));	
 	
 	$form -> addElement(new XoopsFormHidden('id',$id));
@@ -132,7 +132,7 @@ garage_tabsAdminMenu("cat_piece.php");
 		    }
 		echo '</tr></table><br />';
 
-	$form = new XoopsThemeForm(_AM_CAT_CREATION,'ccat','cat_piece.php?op=creatcat','post');
+	$form = new XoopsThemeForm(_AM_CAT_CREATION,'ccat','cat_piece.php?op=creatcat','post', true);
 	$form -> addElement(new XoopsFormText(_AM_CAT_NOM,'nom',50,255, ''));	
 	$form -> addElement(new XoopsFormButton('', 'submit', _AM_CREATING, 'submit'));
 	$form -> display();

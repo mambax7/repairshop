@@ -76,7 +76,7 @@ garage_tabsAdminMenu("marque.php");
     doc_info('marque');
 
 
-	$form = new XoopsThemeForm(_AM_MARQUE_MODIFICATION,'mmarque',"marque.php?op=update&id='".$id."'",'post');
+	$form = new XoopsThemeForm(_AM_MARQUE_MODIFICATION,'mmarque',"marque.php?op=update&id='".$id."'",'post', true);
 	$form -> addElement(new XoopsFormText(_AM_MARQUE_NOM,'nom',50,255, $nom));	
 	
 	$form -> addElement(new XoopsFormHidden('id',$id));
@@ -132,7 +132,7 @@ garage_tabsAdminMenu("marque.php");
 		    }
 		echo '</tr></table><br />';
 
-	$form = new XoopsThemeForm(_AM_MARQUE_CREATION,'cmarque','marque.php?op=creatmarque','post');
+	$form = new XoopsThemeForm(_AM_MARQUE_CREATION,'cmarque','marque.php?op=creatmarque','post', true);
 	$form -> addElement(new XoopsFormText(_AM_MARQUE_NOM,'nom',50,255, ''));	
 	$form -> addElement(new XoopsFormButton('', 'submit', _AM_CREATING, 'submit'));
 	$form -> display();

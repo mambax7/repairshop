@@ -127,7 +127,7 @@ Xoops_Cp_Header();
 
 garage_tabsAdminMenu("vehicule.php");
 
-	$form = new XoopsThemeForm(_AM_VEHICULE_MODIFICATION,'mvehicule',"vehicule.php?op=update&id='".$id."'",'post');
+	$form = new XoopsThemeForm(_AM_VEHICULE_MODIFICATION,'mvehicule',"vehicule.php?op=update&id='".$id."'",'post', true);
 
   $form->insertBreak('<h3><center>'._AM_VEHICULE_ADMINFO.'</center></h3>','head');
 	$form -> addElement(new XoopsFormText(_AM_VEHICULE_IMMAT,'immat',20,25, $immat));	
@@ -286,7 +286,7 @@ if ($id_proprietaire !=0){
 		echo '</tr></table><br />';
 
 
-	$form = new XoopsThemeForm(_AM_VEHICULE_CREATION,'cvehicule','vehicule.php?op=creatvehicule','post');
+	$form = new XoopsThemeForm(_AM_VEHICULE_CREATION,'cvehicule','vehicule.php?op=creatvehicule','post', true);
 
   $form->insertBreak('<h3><center>'._AM_VEHICULE_ADMINFO.'</center></h3>','head');
 

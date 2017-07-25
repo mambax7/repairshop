@@ -136,7 +136,7 @@ garage_tabsAdminMenu("forfait.php");
     doc_info('forfait');
 
 
-	$form = new XoopsThemeForm(_AM_FORFAIT_MODIFICATION,'mforfait',"forfait.php?op=create&id=".$id,'post');
+	$form = new XoopsThemeForm(_AM_FORFAIT_MODIFICATION,'mforfait',"forfait.php?op=create&id=".$id,'post', true);
 	$form -> addElement(new XoopsFormText(_AM_FORFAIT_NOM,'nom_forfait',50,255, $nom));	
 	$form -> addElement(new XoopsFormTextArea(_AM_FORFAIT_DESCRIPTION,'description_forfait',$description,5,60));	
   $form -> addElement(new XoopsFormText(_AM_FORFAIT_TARIF,'tarif_forfait',10,10, $tarif));	
@@ -249,7 +249,7 @@ garage_tabsAdminMenu("forfait.php");
 		    }
 		echo '</tr></table><br />';
 
-	$form = new XoopsThemeForm(_AM_FORFAIT_CREATION,'cforfait','forfait.php?op=create','post');
+	$form = new XoopsThemeForm(_AM_FORFAIT_CREATION,'cforfait','forfait.php?op=create','post', true);
 	$form -> addElement(new XoopsFormText(_AM_FORFAIT_NOM,'nom_forfait',50,255, ''));	
 	$form -> addElement(new XoopsFormTextArea(_AM_FORFAIT_DESCRIPTION,'description_forfait','',5,60));	
   $form -> addElement(new XoopsFormText(_AM_FORFAIT_TARIF,'tarif_forfait',10,10, ''));	

@@ -238,7 +238,7 @@ garage_tabsAdminMenu(__FILE__);
   echo "<a href='index.php'><img src='../images/fleche.gif' alt='"._AM_BACKTOLISTE."' title='"._AM_BACKTOLISTE."'><br>"._AM_BACKTOLISTE."</a>";
 
 
-  $form = new XoopsThemeForm(_AM_CREATE." "._AM_INTER_VEHICULE,'cinter',"inter_pces.php?op=create&id_inter=".$id_inter,'post');
+  $form = new XoopsThemeForm(_AM_CREATE." "._AM_INTER_VEHICULE,'cinter',"inter_pces.php?op=create&id_inter=".$id_inter,'post', true);
   $form->setExtra("enctype='multipart/form-data'") ; // imperatif !
 
 	$etrep  = "<table border=1>";

@@ -109,7 +109,7 @@ if (empty($op)){
 	xorgachart_tabsAdminMenu(__FILE__);
 
 
-	$form = new XoopsThemeForm(_AM_ORGA_IMPORT_CREATION,'iuser','import.php?op=import_user','post');
+	$form = new XoopsThemeForm(_AM_ORGA_IMPORT_CREATION,'iuser','import.php?op=import_user','post', true);
 		
 	$form -> addElement(new XoopsFormText(_AM_ORGA_IMPORT_NAME,'table_src',20,255, $xoopsDB->prefix("users")));
 		

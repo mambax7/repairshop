@@ -209,7 +209,7 @@ if ($id_forfait !=0){
   echo "<a href='index.php'><img src='images/fleche.gif' alt='"._MD_BACKTOLISTE."' title='"._MD_BACKTOLISTE."'><br>"._MD_BACKTOLISTE."</a>";
 
 
-  $form = new XoopsThemeForm(_MD_CREATE." "._MD_INTER_VEHICULE,'cinter','inter_pces.php?op=create','post');
+  $form = new XoopsThemeForm(_MD_CREATE." "._MD_INTER_VEHICULE,'cinter','inter_pces.php?op=create','post', true);
   $form->setExtra("enctype='multipart/form-data'") ; // imperatif !
 
 	$etrep  = "<table border=1>";

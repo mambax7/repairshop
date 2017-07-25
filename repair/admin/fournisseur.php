@@ -83,7 +83,7 @@ garage_tabsAdminMenu("fournisseur.php");
 
 doc_info('Fournisseur');
 
-	$form = new XoopsThemeForm(_AM_FOURNISSEUR_MODIFICATION,'mfournisseur',"fournisseur.php?op=update&id='".$id."'",'post');
+	$form = new XoopsThemeForm(_AM_FOURNISSEUR_MODIFICATION,'mfournisseur',"fournisseur.php?op=update&id='".$id."'",'post', true);
 	$form -> addElement(new XoopsFormText(_AM_FOURNISSEUR_NOM,'nom',50,255, $nom));		
 	$form -> addElement(new XoopsFormTextArea(_AM_FOURNISSEUR_ADDRESS,'adresse',$adresse,5,60));	
 	$form -> addElement(new XoopsFormText(_AM_FOURNISSEUR_PHONE,'tel',50,255, $tel));	
@@ -152,7 +152,7 @@ doc_info('Fournisseur');
 		    }
 		echo '</tr></table><br />';
 
-	$form = new XoopsThemeForm(_AM_FOURNISSEUR_CREATION,'cfournisseur','fournisseur.php?op=creatfournisseur','post');
+	$form = new XoopsThemeForm(_AM_FOURNISSEUR_CREATION,'cfournisseur','fournisseur.php?op=creatfournisseur','post', true);
 	$form -> addElement(new XoopsFormText(_AM_FOURNISSEUR_NOM,'nom',50,255, ''));	
 	$form -> addElement(new XoopsFormTextArea(_AM_FOURNISSEUR_ADDRESS,'adresse','',5,60));	
 	$form -> addElement(new XoopsFormText(_AM_FOURNISSEUR_PHONE,'tel',50,255, ''));	

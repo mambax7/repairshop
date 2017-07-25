@@ -103,7 +103,7 @@ Xoops_Cp_Header();
 
 garage_tabsAdminMenu("client.php");
 
-	$form = new XoopsThemeForm(_AM_CLIENT_MODIFICATION,'mclient',"client.php?op=update&id='".$id."'",'post');
+	$form = new XoopsThemeForm(_AM_CLIENT_MODIFICATION,'mclient',"client.php?op=update&id='".$id."'",'post', true);
 	$form -> addElement(new XoopsFormText(_AM_CLIENT_COMPTE,'compte',50,255, $compte));	
 	$form -> addElement(new XoopsFormText(_AM_CLIENT_RS,'rs',100,255, $rs));	
 
@@ -200,7 +200,7 @@ garage_tabsAdminMenu("client.php");
 		    }
 		echo '</tr></table><br />';
 
-	$form = new XoopsThemeForm(_AM_CLIENT_CREATION,'cclient','client.php?op=creatclient','post');
+	$form = new XoopsThemeForm(_AM_CLIENT_CREATION,'cclient','client.php?op=creatclient','post', true);
 	$form -> addElement(new XoopsFormText(_AM_CLIENT_COMPTE,'compte',50,255, ''));	
 	$form -> addElement(new XoopsFormText(_AM_CLIENT_RS,'rs',100,255, ''));	
 

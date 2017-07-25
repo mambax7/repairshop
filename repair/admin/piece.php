@@ -87,7 +87,7 @@ garage_tabsAdminMenu("piece.php");
     doc_info('Piece');
 
 
-	$form = new XoopsThemeForm(_AM_PIECES_MODIFICATION,'mpieces',"piece.php?op=update&id='".$id."'",'post');
+	$form = new XoopsThemeForm(_AM_PIECES_MODIFICATION,'mpieces',"piece.php?op=update&id='".$id."'",'post', true);
 
 	$reqcat = $xoopsDB->query("SELECT id, nom FROM ".$xoopsDB->prefix("garage_cat_piece")." order by nom");
 	while (($row = $xoopsDB->fetchArray($reqcat)) != false ){
@@ -212,7 +212,7 @@ garage_tabsAdminMenu("piece.php");
 
 
 // Formulaire de creation
-	$form = new XoopsThemeForm(_AM_PIECES_CREATION,'cpieces','piece.php?op=creatpieces','post');
+	$form = new XoopsThemeForm(_AM_PIECES_CREATION,'cpieces','piece.php?op=creatpieces','post', true);
 
 	$reqcat = $xoopsDB->query("SELECT id, nom FROM ".$xoopsDB->prefix("garage_cat_piece")." order by nom");
 	while (($row = $xoopsDB->fetchArray($reqcat)) != false ){

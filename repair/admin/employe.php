@@ -98,7 +98,7 @@ Xoops_Cp_Header();
 
 garage_tabsAdminMenu("employe.php");
 
-	$form = new XoopsThemeForm(_AM_MODIFI." -> ".$id_empl,'memploye','employe.php?op=update&id_empl='.$id_empl,'post');
+	$form = new XoopsThemeForm(_AM_MODIFI." -> ".$id_empl,'memploye','employe.php?op=update&id_empl='.$id_empl,'post', true);
 		    
 	$form -> addElement(new XoopsFormText(_AM_GARAGE_EMPL_NAME,'nom_empl',50,255, $nom));	
 	$form -> addElement(new XoopsFormText(_AM_GARAGE_EMPL_PREN,'pre_empl',50,255, $prenom));	
@@ -158,7 +158,7 @@ garage_tabsAdminMenu("employe.php");
 		    }
 		echo '</tr></table><br />';
 
-	$form = new XoopsThemeForm(_AM_GARAGE_EMPL_CREATION,'cempl','employe.php?op=creatempl','post');
+	$form = new XoopsThemeForm(_AM_GARAGE_EMPL_CREATION,'cempl','employe.php?op=creatempl','post', true);
 		    
 	$form -> addElement(new XoopsFormText(_AM_GARAGE_EMPL_NAME,'nom_empl',50,255));	
 	$form -> addElement(new XoopsFormText(_AM_GARAGE_EMPL_PREN,'pre_empl',50,255));	

@@ -172,7 +172,7 @@ if ($new_proprietaire != ""){
   	}
 
 
-  $form = new XoopsThemeForm(_MD_CREATE." "._MD_INTER_VEHICULE,'cinter','intervention.php?op=create','post');
+  $form = new XoopsThemeForm(_MD_CREATE." "._MD_INTER_VEHICULE,'cinter','intervention.php?op=create','post', true);
   $form->setExtra("enctype='multipart/form-data'") ; // imperatif !
 
   $vehic 	= new XoopsFormElementTray(_MD_VEHICULE);
