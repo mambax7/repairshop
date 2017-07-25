@@ -1,57 +1,113 @@
 <?php
-//  ------------------------------------------------------------------------ //
-//                XOOPS - PHP Content Management System                      //
-//                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
-//  ------------------------------------------------------------------------ //
-//  This program is free software; you can redistribute it and/or modify     //
-//  it under the terms of the GNU General Public License as published by     //
-//  the Free Software Foundation; either version 2 of the License, or        //
-//  (at your option) any later version.                                      //
-//                                                                           //
-//  You may not change or alter any portion of this comment or credits       //
-//  of supporting developers from this source code or any supporting         //
-//  source code which is considered copyrighted (c) material of the          //
-//  original comment or credit authors.                                      //
-//                                                                           //
-//  This program is distributed in the hope that it will be useful,          //
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
-//  GNU General Public License for more details.                             //
-//                                                                           //
-//  You should have received a copy of the GNU General Public License        //
-//  along with this program; if not, write to the Free Software              //
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
-//  ------------------------------------------------------------------------ //
-// Project: The XOOPS Project                                                //
-// ------------------------------------------------------------------------- //
+/*
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
 
-global $xoopsConfig;
+/**
+ * @copyright    XOOPS Project https://xoops.org/
+ * @license      GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
+ * @package
+ * @since
+ * @author       XOOPS Development Team
+ */
 
-$adminmenu[0]['title'] = "Administration";
-$adminmenu[0]['link'] = "admin/vehicule.php";
+$moduleDirName = basename(dirname(__DIR__));
 
-$adminmenu[3]['title']  = _MI_GARAGE_INTER;
-$adminmenu[3]['link']   = "admin/intervention.php";
+if (false !== ($moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName))) {
+} else {
+    $moduleHelper = Xmf\Module\Helper::getHelper('system');
+}
+$adminObject = \Xmf\Module\Admin::getInstance();
 
-$adminmenu[4]['title']  = _MI_GARAGE_VEHICULE;
-$adminmenu[4]['link']   = "admin/vehicule.php";
+$pathIcon32    = \Xmf\Module\Admin::menuIconPath('');
+$pathModIcon32 = $moduleHelper->getModule()->getInfo('modicons32');
 
-$adminmenu[5]['title']  = _MI_GARAGE_CLIENTS;
-$adminmenu[5]['link']   = "admin/client.php";
+$moduleHelper->loadLanguage('modinfo');
 
-$adminmenu[6]['title']  = _MI_GARAGE_FOURNISSEURS;
-$adminmenu[6]['link']   = "admin/fournisseur.php";
+xoops_loadLanguage('modinfo', $moduleDirName);
 
-$adminmenu[7]['title']  = _MI_GARAGE_PIECES;
-$adminmenu[7]['link']   = "admin/piece.php";
+$adminmenu[] = array(
+    'title' => _AM_MODULEADMIN_HOME,
+    'link'  => 'admin/index.php',
+    'icon'  => $pathIcon32 . '/home.png'
+);
 
-$adminmenu[8]['title']  = _MI_GARAGE_CAT_PIECES;
-$adminmenu[8]['link']   = "admin/cat_piece.php";
+//global $xoopsConfig;
 
-$adminmenu[9]['title']  = _MI_GARAGE_MARQUES;
-$adminmenu[9]['link']   = "admin/marque.php";
+$adminmenu[] = array(
+    'title' => _MI_GARAGE_INTER,
+    'link'  => 'admin/intervention.php',
+    'icon'  => $pathModIcon32 . '/ajouter.png'
+);
 
-$adminmenu[10]['title']  = _MI_GARAGE_EMPLOYES;
-$adminmenu[10]['link']   = "admin/employe.php";
-?>
+$adminmenu[] = array(
+    'title' => _MI_GARAGE_VEHICULE,
+    'link'  => 'admin/vehicule.php',
+    'icon'  => $pathModIcon32 . '/voiture.jpeg'
+);
+
+$adminmenu[] = array(
+    'title' => _MI_GARAGE_CLIENTS,
+    'link'  => 'admin/client.php',
+    'icon'  => $pathModIcon32 . '/client.jpeg'
+);
+
+$adminmenu[] = array(
+    'title' => _MI_GARAGE_FOURNISSEURS,
+    'link'  => 'admin/fournisseur.php',
+    'icon'  => $pathModIcon32 . '/fournisseur.jpeg'
+);
+
+$adminmenu[] = array(
+    'title' => _MI_GARAGE_PIECES,
+    'link'  => 'admin/piece.php',
+    'icon'  => $pathModIcon32 . '/piece2.jpeg'
+);
+
+$adminmenu[] = array(
+    'title' => _MI_GARAGE_CAT_PIECES,
+    'link'  => 'admin/cat_piece.php',
+    'icon'  => $pathModIcon32 . '/categorie.jpeg'
+);
+
+$adminmenu[] = array(
+    'title' => _MI_GARAGE_MARQUES,
+    'link'  => 'admin/marque.php',
+    'icon'  => $pathModIcon32 . '/marque-voiture.jpg'
+);
+
+$adminmenu[] = array(
+    'title' => _MI_GARAGE_FORFAIT,
+    'link'  => 'admin/forfait.php',
+    'icon'  => $pathModIcon32 . '/forfait-reparation.jpg'
+);
+
+$adminmenu[] = array(
+    'title' => _MI_GARAGE_EMPLOYES,
+    'link'  => 'admin/employe.php',
+    'icon'  => $pathModIcon32 . '/employe.jpeg'
+);
+
+$adminmenu[] = array(
+    'title' => _MI_GARAGE_DOC,
+    'link'  => 'admin/gest_doc.php',
+    'icon'  => $pathModIcon32 . '/doc.jpeg'
+);
+
+$adminmenu[] = array(
+    'title' => _MI_GARAGE_TRASH,
+    'link'  => 'admin/trash.php',
+    'icon'  => $pathModIcon32 . '/corbeille.jpeg'
+);
+
+$adminmenu[] = array(
+    'title' => _AM_MODULEADMIN_ABOUT,
+    'link'  => 'admin/about.php',
+    'icon'  => $pathIcon32 . '/about.png'
+);
