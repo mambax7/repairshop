@@ -25,6 +25,8 @@ require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
 xoops_header();
 
+$moduleDirName = basename(__DIR__);
+
 $myts = MyTextSanitizer::getInstance();
 
 if (!isset($_POST['solde'])) {
@@ -55,7 +57,7 @@ if ($etat == 2) {
     $style    = 'archive';
 }
 
-$xoopsModule = XoopsModule::getByDirname('repair');
+$xoopsModule = XoopsModule::getByDirname($moduleDirName);
 
 if ($xoopsUser) {
     if ($xoopsUser->isAdmin($xoopsModule->mid())) {
@@ -72,7 +74,7 @@ echo '<h1>' . $etat_des . '</h1>';
 // on affiche les interventions en cours
 $result = $xoopsDB->query('SELECT id, id_voiture, date_debut, date_fin, delai, solde  FROM ' . $xoopsDB->prefix('garage_intervention') . ' WHERE solde =' . $etat);
 
-echo "<table class=\"outer\" width=\"100%\">\n" . '<th><center>' . _MD_INTER_DELAI . "</center></th>\n" . '<th><center>' . _MD_VEHICULE . "</center></th>\n" . '<th><center>' . _MD_VEHICULE_PROPRIETAIRE . "</center></th>\n" . "<th colspan=\"2\"><center>" . _MD_ACTION . "</center></th>\n";
+echo "<table class=\"outer\" width=\"100%\">\n" . '<th><div class="center;">' . _MD_INTER_DELAI . "</div></th>\n" . '<th><div class="center;">' . _MD_VEHICULE . "</div></th>\n" . '<th><div class="center;">' . _MD_VEHICULE_PROPRIETAIRE . "</div></th>\n" . "<th colspan=\"2\"><div class='center;'>" . _MD_ACTION . "</div></th>\n";
 
 while ((list($id_inter, $id_voiture, $date_debut, $date_fin, $delai, $solde) = $xoopsDB->fetchRow($result)) !== false) {
 

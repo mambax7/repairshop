@@ -37,13 +37,13 @@ if($op == "import_user"){
 	}
 
 	echo "<table class='outer' width='100%'>\n"
-			."<tr><FONT color=red><center>Cr&eacute;ation employ&eacute;s</center></FONT></tr>\n"
-			."<th><center>"._AM_ORGA_EMPL_CID."</center></th>\n"
-			."<th><center>"._AM_ORGA_EMPL_NAME."</center></th>\n"
-			."<th><center>"._AM_ORGA_EMPL_PREN."</center></th>\n"
-			."<th><center>"._AM_ORGA_EMPL_PHOTO."</center></th>\n"
-			."<th><center>"._AM_ORGA_EMPL_TEL."</center></th>\n"
-			."<th><center>"._AM_ORGA_EMPL_LOCA."</center></th>\n";
+			."<tr><FONT color=red><div class='center;'>Cr&eacute;ation employ&eacute;s</div></FONT></tr>\n"
+			."<th><div class='center;'>"._AM_ORGA_EMPL_CID."</div></th>\n"
+			."<th><div class='center;'>"._AM_ORGA_EMPL_NAME."</div></th>\n"
+			."<th><div class='center;'>"._AM_ORGA_EMPL_PREN."</div></th>\n"
+			."<th><div class='center;'>"._AM_ORGA_EMPL_PHOTO."</div></th>\n"
+			."<th><div class='center;'>"._AM_ORGA_EMPL_TEL."</div></th>\n"
+			."<th><div class='center;'>"._AM_ORGA_EMPL_LOCA."</div></th>\n";
 
 
 	$sql = "select name FROM ".$table_src;

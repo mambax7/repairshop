@@ -139,7 +139,7 @@ if (empty($op)) {
 
     $result = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('garage_doc')); //." ORDER BY id_doc");
 
-    echo "<table class=\"outer\" width=\"100%\">\n" . "<th width='20px'><center>" . _AM_DOC . "</center></th>\n" . '<th><center>' . _AM_DOC_DES . "</center></th>\n" . "<th colspan=\"2\"><center>" . _AM_ACTION . "</center></th>\n";
+    echo "<table class=\"outer\" width=\"100%\">\n" . "<th width='20px'><div class='center;'>" . _AM_DOC . "</div></th>\n" . '<th><div class='center;'>' . _AM_DOC_DES . "</div></th>\n" . "<th colspan=\"2\"><div class='center;'>" . _AM_ACTION . "</div></th>\n";
 
     while ((list($id_doc, $doc_fr) = $xoopsDB->fetchRow($result)) !== false) {
         echo '<tr>';

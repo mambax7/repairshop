@@ -257,7 +257,7 @@ if (empty($op)) {
         $etrep .= '<td align=left colspan=3>' . nl2br($description) . '</td></tr>';
         $etrep .= '</table>';
 
-        $form->insertBreak(_MD_VEHICULE_INTERVENTION . '<center><br>' . $etrep . '</center>', 'head');
+        $form->insertBreak(_MD_VEHICULE_INTERVENTION . '<div class="center;"><br>' . $etrep . '</div>', 'head');
 
         $mod_dec = '<table border=1>';
         $mod_dec .= '<tr><td></td>';
@@ -346,7 +346,7 @@ if (empty($op)) {
         $mod_dec .= '</table>';
 
         if ($nbmo != 0) {
-            $form->insertBreak('<h3><center>' . _MD_INTER_MOD . '</center></h3><br>' . $mod_dec, 'head');
+            $form->insertBreak('<h3><div class="center;">' . _MD_INTER_MOD . '</div></h3><br>' . $mod_dec, 'head');
         }
         $reqemp = $xoopsDB->query('SELECT id_empl, nom_empl, pre_empl  FROM ' . $xoopsDB->prefix('garage_employe') . ' ORDER BY nom_empl');
         while (($row = $xoopsDB->fetchArray($reqemp)) !== false) {
@@ -370,7 +370,7 @@ if (empty($op)) {
         $form->addElement(new XoopsFormTextArea(_MD_INTER_TRAVAUX_REAL, 'observation', $observation, 5, 80));
         $form->addElement(new XoopsFormButton('', 'submit', _MD_CREATE, 'submit'));
 
-        $form->insertBreak('<h3><center>' . _MD_INTER_PIECES . '</center></h3>', 'head');
+        $form->insertBreak('<h3><div class="center;">' . _MD_INTER_PIECES . '</div></h3>', 'head');
 
         $pieces_det = '<table border=1>';
         $pieces_det .= '<tr><th align=left>' . _MD_PCE_DESIG . '</th>';
@@ -428,7 +428,7 @@ if (empty($op)) {
         $pieces_det .= '</table>';
 
         if ($nbp != 0) {
-            $form->insertBreak(_MD_INTER_PIECES_UTILISEES . '<center><br>' . $pieces_det . '</center>', 'head');
+            $form->insertBreak(_MD_INTER_PIECES_UTILISEES . '<div class="center;"><br>' . $pieces_det . '</div>', 'head');
         }
         // ajout de pieces
         $req1              = $xoopsDB->query('SELECT p.id, p.ref, p.designation, f.nom FROM ' . $xoopsDB->prefix('garage_pieces') . ' p INNER JOIN ' . $xoopsDB->prefix('garage_fournisseur') . ' f ON f.id = p.id_fournisseur ORDER BY designation ASC');
@@ -506,11 +506,11 @@ if (empty($op)) {
         }
 
         if ($nbfd != 0) {
-            $form->insertBreak('<h3><center>' . _MD_FORFAIT . '</center></h3><br>', 'head');
+            $form->insertBreak('<h3><div class="center;">' . _MD_FORFAIT . '</div></h3><br>', 'head');
         }
 
         if ($nbf != 0) {
-            $form->insertBreak(_MD_FORFAIT_UTILISE . '<center><br>' . $forfait . '</center>', 'head');
+            $form->insertBreak(_MD_FORFAIT_UTILISE . '<div class="center;"><br>' . $forfait . '</div>', 'head');
         }
 
         if ($nbfd != 0) {

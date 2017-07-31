@@ -201,8 +201,8 @@ if (empty($op)) {
 
     $result = $xoopsDB->query('SELECT id, nom, prenom, cp, ville FROM ' . $xoopsDB->prefix('garage_clients') . ' ORDER BY id');
 
-    echo "<table class=\"outer\" width=\"100%\">\n" . '<th><center>' . _AM_CLIENT_NOM . ' / ' . _AM_CLIENT_PRENOM . "</center></th>\n" . '<th><center>' . _AM_CLIENT_CP . ' - ' . _AM_CLIENT_VILLE . "</center></th>\n" . "<th colspan=\"2\"><center>" . _AM_ACTION . "</center></th>\n";
-    //      ."<th><center>"._AM_ACTION."</center></th>\n";
+    echo "<table class=\"outer\" width=\"100%\">\n" . '<th><div class='center;'>' . _AM_CLIENT_NOM . ' / ' . _AM_CLIENT_PRENOM . "</div></th>\n" . '<th><div class='center;'>' . _AM_CLIENT_CP . ' - ' . _AM_CLIENT_VILLE . "</div></th>\n" . "<th colspan=\"2\"><div class='center;'>" . _AM_ACTION . "</div></th>\n";
+    //      ."<th><div class='center;'>"._AM_ACTION."</div></th>\n";
 
     while ((list($id, $nom, $prenom, $cp, $ville) = $xoopsDB->fetchRow($result)) !== false) {
         echo '<tr>';

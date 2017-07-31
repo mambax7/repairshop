@@ -159,7 +159,7 @@ switch ($op) {
         $form->addElement(new XoopsFormTextArea(_AM_FORFAIT_DESCRIPTION, 'description_forfait', $description, 5, 60));
         $form->addElement(new XoopsFormText(_AM_FORFAIT_TARIF, 'tarif_forfait', 10, 10, $tarif));
 
-        $form->insertBreak('<h3><center>' . _AM_FORFAIT_PIECES . '</center></h3><br>', 'head');
+        $form->insertBreak('<h3><div class="center;">' . _AM_FORFAIT_PIECES . '</div></h3><br>', 'head');
         //pieces
 
         // ajout de pieces
@@ -188,7 +188,7 @@ switch ($op) {
         }
 
         $pieces_det .= '</table>';
-        $form->insertBreak(_AM_INTER_PIECES_UTILISEES . '<center><br>' . $pieces_det . '</center>', 'head');
+        $form->insertBreak(_AM_INTER_PIECES_UTILISEES . '<div class="center;"><br>' . $pieces_det . '</div>', 'head');
 
         // Piece magasin
 
@@ -254,9 +254,9 @@ if (empty($op)) {
          . "<th><align='left'>"
          . _AM_FORFAIT_TARIF
          . "</center></th>\n"
-         . "<th colspan=\"2\"><center>"
+         . "<th colspan=\"2\"><div class='center;'>"
          . _AM_ACTION
-         . "</center></th>\n";
+         . "</div></th>\n";
 
     while ((list($id, $nom, $description, $tarif) = $xoopsDB->fetchRow($result)) !== false) {
         $cat[$id] = $id;

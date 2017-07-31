@@ -104,7 +104,7 @@ if (empty($op)) {
     // on affiche uniquement les interventions de la corbeille (etat a 9)
     $result = $xoopsDB->query('SELECT id, id_voiture, date_debut, date_fin, delai, solde  FROM ' . $xoopsDB->prefix('garage_intervention') . ' WHERE solde =9');
 
-    echo "<table class=\"outer\" width=\"100%\">\n" . '<th><center>' . _AM_INTER_DELAI . "</center></th>\n" . '<th><center>' . _AM_VEHICULE . "</center></th>\n" . '<th><center>' . _AM_VEHICULE_PROPRIETAIRE . "</center></th>\n" . "<th colspan=\"2\"><center>" . _AM_ACTION . "</center></th>\n";
+    echo "<table class=\"outer\" width=\"100%\">\n" . '<th><div class="center;">' . _AM_INTER_DELAI . "</div></th>\n" . '<th><center>' . _AM_VEHICULE . "</center></th>\n" . '<th><div class="center;">' . _AM_VEHICULE_PROPRIETAIRE . "</div></th>\n" . "<th colspan=\"2\"><div class='center;'>" . _AM_ACTION . "</div></th>\n";
 
     while ((list($id_inter, $id_voiture, $date_debut, $date_fin, $delai, $solde) = $xoopsDB->fetchRow($result)) !== false) {
 

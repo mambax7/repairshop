@@ -147,7 +147,7 @@ switch ($op) {
 
         $form = new XoopsThemeForm(_AM_VEHICULE_MODIFICATION, 'mvehicule', "vehicule.php?op=update&id='" . $id . "'", 'post', true);
 
-        $form->insertBreak('<h3><center>' . _AM_VEHICULE_ADMINFO . '</center></h3>', 'head');
+        $form->insertBreak('<h3><div class="center;">' . _AM_VEHICULE_ADMINFO . '</div></h3>', 'head');
         $form->addElement(new XoopsFormText(_AM_VEHICULE_IMMAT, 'immat', 20, 25, $immat));
 
         $req4 = $xoopsDB->query('SELECT id, nom, prenom, cp FROM ' . $xoopsDB->prefix('garage_clients') . ' ORDER BY nom');
@@ -162,7 +162,7 @@ switch ($op) {
         $form->addElement(new XoopsFormTextDateSelect(_AM_VEHICULE_DATE_MEC, 'date_mec', 15, strtotime($date_mec)));
         $form->addElement(new XoopsFormText(_AM_VEHICULE_KILOMETRAGE, 'kilometrage', 50, 255, $kilometrage));
 
-        $form->insertBreak('<h3><center>' . _AM_VEHICULE_TECHINFO . '</center></h3>', 'head');
+        $form->insertBreak('<h3><div class="center;">' . _AM_VEHICULE_TECHINFO . '</div></h3>', 'head');
         $ct = new XoopsFormElementTray(_AM_VEHICULE_CT);
         $ct->addElement(new XoopsFormTextDateSelect(_AM_VEHICULE_DERNIER_CT, 'dernier_ct', 15, strtotime($dernier_ct)));
         $ct->addElement(new XoopsFormTextDateSelect(_AM_VEHICULE_PROCHAIN_CT, 'prochain_ct', 15, strtotime($prochain_ct)));
@@ -198,7 +198,7 @@ switch ($op) {
 
         $form->addElement(new XoopsformTextDateSelect(_AM_VEHICULE_DATE_CG, 'date_cg', 15, strtotime($date_cg)));
 
-        $form->insertBreak('<h3><center>' . _AM_VEHICULE_ENTRETIEN . '</center></h3>', 'head');
+        $form->insertBreak('<h3><div class="center;">' . _AM_VEHICULE_ENTRETIEN . '</div></h3>', 'head');
         $distrib = new XoopsFormElementTray(_AM_VEHICULE_DISTRIBUTION);
         $distrib->addElement(new XoopsformTextDateSelect(_AM_VEHICULE_DATE_DISTRIBUTION, 'date_distribution', 15, strtotime($date_distribution)));
         $distrib->addElement(new XoopsformText(_AM_VEHICULE_KM_DISTRIBUTION, 'km_distribution', 10, 25, $km_distribution));
@@ -264,8 +264,8 @@ if (empty($op)) {
 
     $result = $xoopsDB->query('SELECT id, immat, id_proprietaire, id_marque, gamme, modele_version FROM ' . $xoopsDB->prefix('garage_vehicule') . ' ORDER BY id');
 
-    echo "<table class=\"outer\" width=\"100%\">\n" . '<th><center>' . _AM_VEHICULE_IMMAT . ' / ' . _AM_VEHICULE_MARQUE . "</center></th>\n" . '<th><center>' . _AM_VEHICULE_PROPRIETAIRE . "</center></th>\n" . "<th colspan=\"2\"><center>" . _AM_ACTION . "</center></th>\n";
-    //      ."<th><center>"._AM_ACTION."</center></th>\n";
+    echo "<table class=\"outer\" width=\"100%\">\n" . '<th><div class="center;">' . _AM_VEHICULE_IMMAT . ' / ' . _AM_VEHICULE_MARQUE . "</div></th>\n" . '<th><div class="center;">' . _AM_VEHICULE_PROPRIETAIRE . "</div></th>\n" . "<th colspan=\"2\"><div class='center;'>" . _AM_ACTION . "</div></th>\n";
+    //      ."<th><div class='center;'>"._AM_ACTION."</div></th>\n";
 
     while ((list($id, $immat, $id_proprietaire, $id_marque, $gamme, $modele_version) = $xoopsDB->fetchRow($result)) !== false) {
         $marque = '';
@@ -299,7 +299,7 @@ if (empty($op)) {
 
     $form = new XoopsThemeForm(_AM_VEHICULE_CREATION, 'cvehicule', 'vehicule.php?op=creatvehicule', 'post', true);
 
-    $form->insertBreak('<h3><center>' . _AM_VEHICULE_ADMINFO . '</center></h3>', 'head');
+    $form->insertBreak('<h3><div class="center;">' . _AM_VEHICULE_ADMINFO . '</div></h3>', 'head');
 
     $form->addElement(new XoopsFormText(_AM_VEHICULE_IMMAT, 'immat', 25, 50));
 
@@ -314,7 +314,7 @@ if (empty($op)) {
     $form->addElement(new XoopsFormTextDateSelect(_AM_VEHICULE_DATE_MEC, 'date_mec', 15, date('YYYY-mm-dd')));
     $form->addElement(new XoopsFormText(_AM_VEHICULE_KILOMETRAGE, 'kilometrage', 15, 25));
 
-    $form->insertBreak('<h3><center>' . _AM_VEHICULE_TECHINFO . '</center></h3>', 'head');
+    $form->insertBreak('<h3><div class="center;">' . _AM_VEHICULE_TECHINFO . '</div></h3>', 'head');
     $ct = new XoopsFormElementTray(_AM_VEHICULE_CT);
     $ct->addElement(new XoopsFormTextDateSelect(_AM_VEHICULE_DERNIER_CT, 'dernier_ct', 15, date('YYYY-mm-dd')));
     $ct->addElement(new XoopsFormTextDateSelect(_AM_VEHICULE_PROCHAIN_CT, 'prochain_ct', 15, date('YYYY-mm-dd')));
@@ -348,7 +348,7 @@ if (empty($op)) {
 
     $form->addElement(new XoopsformTextDateSelect(_AM_VEHICULE_DATE_CG, 'date_cg', 15, date('YYYY-mm-dd')));
 
-    $form->insertBreak('<h3><center>' . _AM_VEHICULE_ENTRETIEN . '</center></h3>', 'head');
+    $form->insertBreak('<h3><div class="center;">' . _AM_VEHICULE_ENTRETIEN . '</div></h3>', 'head');
     $distrib = new XoopsFormElementTray(_AM_VEHICULE_DISTRIBUTION);
     $distrib->addElement(new XoopsformTextDateSelect(_AM_VEHICULE_DATE_DISTRIBUTION, 'date_distribution', 15, date('YYYY-mm-dd')));
     $distrib->addElement(new XoopsformText(_AM_VEHICULE_KM_DISTRIBUTION, 'km_distribution', 15, 20));

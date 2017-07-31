@@ -125,7 +125,7 @@ if (empty($op)) {
     $result = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('garage_marque') . ' ORDER BY id');
     $marque = array();
 
-    echo "<table class=\"outer\" width=\"100%\">\n" . "<th><align='left'>" . _AM_MARQUE_NOM . "</center></th>\n" . "<th colspan=\"2\"><center>" . _AM_ACTION . "</center></th>\n";
+    echo "<table class=\"outer\" width=\"100%\">\n" . "<th><align='left'>" . _AM_MARQUE_NOM . "</center></th>\n" . "<th colspan=\"2\"><div class='center;'>" . _AM_ACTION . "</div></th>\n";
 
     while ((list($id, $nom) = $xoopsDB->fetchRow($result)) !== false) {
         $marque[$id] = $id;

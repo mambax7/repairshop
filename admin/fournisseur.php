@@ -154,9 +154,9 @@ if (empty($op)) {
          . "<th><align='left'>"
          . _AM_FOURNISSEUR_EMAIL
          . "</center></th>\n"
-         . "<th colspan=\"2\"><center>"
+         . "<th colspan=\"2\"><div class='center;'>"
          . _AM_ACTION
-         . "</center></th>\n";
+         . "</div></th>\n";
 
     while ((list($id, $nom, $adresse, $tel, $fax, $email) = $xoopsDB->fetchRow($result)) !== false) {
         $fournisseur[$id] = $id;

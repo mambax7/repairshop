@@ -36,27 +36,27 @@ echo bonjour;
 $result5 = $xoopsDB->query('SELECT name FROM xoopsv2_users');
 
 echo "<table class=\"outer\" width=\"100%\">\n"
-     . '<th><center>'
+     . '<th><div class="center;">'
      . _AM_ORGA_SERV_CID
-     . "</center></th>\n"
-     . '<th><center>'
+     . "</div></th>\n"
+     . '<th><div class="center;">'
      . _AM_ORGA_SERV_NAME
-     . "</center></th>\n"
-     . '<th><center>'
+     . "</div></th>\n"
+     . '<th><div class="center;">'
      . _AM_ORGA_SERV_PERE
-     . "</center></th>\n"
-     . '<th><center>'
+     . "</div></th>\n"
+     . '<th><div class="center;">'
      . _AM_ORGA_SERV_CHEF
-     . "</center></th>\n"
-     . '<th><center>'
+     . "</div></th>\n"
+     . '<th><div class="center;">'
      . _AM_ORGA_SERV_SECR
-     . "</center></th>\n"
-     . '<th><center>'
+     . "</div></th>\n"
+     . '<th><div class="center;">'
      . _AM_ORGA_SERV_ADJ
-     . "</center></th>\n"
-     . "<th colspan=\"3\"><center>"
+     . "</div></th>\n"
+     . "<th colspan=\"3\"><div class="center;">"
      . _AM_ACTION
-     . "</center></th>\n";
+     . "</div></th>\n";
 
 $result     = $xoopsDB->query('SELECT id_serv, nom_serv, pere, chef, secretaire, adjoint FROM ' . $xoopsDB->prefix('service') . " WHERE id_serv='" . $id_service . "'");
 $service    = array();
@@ -95,24 +95,24 @@ while ((list($id_empl, $id_serv) = $xoopsDB->fetchRow($result2)) !== false || $i
        || $id_adj != '0') {
     ++$i;
     if ($i == 1) {
-        echo '<tr><th><center>'
+        echo '<tr><th><div class="center;">'
              . _AM_ORGA_EMPL_CID
-             . "</center></th>\n"
-             . '<th><center>'
+             . "</div></th>\n"
+             . '<th><div class="center;">'
              . _AM_ORGA_EMPL_NAME
-             . "</center></th>\n"
-             . '<th><center>'
+             . "</div></th>\n"
+             . '<th><div class="center;">'
              . _AM_ORGA_EMPL_PREN
-             . "</center></th>\n"
-             . '<th><center>'
+             . "</div></th>\n"
+             . '<th><div class="center;">'
              . _AM_ORGA_EMPL_PHOTO
-             . "</center></th>\n"
-             . '<th><center>'
+             . "</div></th>\n"
+             . '<th><div class="center;">'
              . _AM_ORGA_EMPL_TEL
-             . "</center></th>\n"
-             . '<th><center>'
+             . "</div></th>\n"
+             . '<th><div class="center;">'
              . _AM_ORGA_EMPL_LOCA
-             . "</center></th>\n"
+             . "</div></th>\n"
              . "<th colspan=\"3\"><center>"
              . _AM_ACTION
              . "</center></th>\n";

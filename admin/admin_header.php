@@ -18,28 +18,34 @@
  */
 
 require_once __DIR__ . '/../../../include/cp_header.php';
-require_once $GLOBALS['xoops']->path('www/class/xoopsformloader.php');
+require_once __DIR__ . '/../../../class/xoopsformloader.php';
 
-//require_once __DIR__ . '/../class/utility.php';
-//require_once __DIR__ . '/../include/common.php';
+require_once __DIR__ . '/../class/utility.php';
 
 $moduleDirName = basename(dirname(__DIR__));
 
-//$moduleDirName = $GLOBALS['xoopsModule']->getVar('dirname');
-
-$pathIcon16           = $GLOBALS['xoops']->url('www/' . $GLOBALS['xoopsModule']->getInfo('sysicons16'));
-$pathIcon32           = $GLOBALS['xoops']->url('www/' . $GLOBALS['xoopsModule']->getInfo('sysicons32'));
-$xoopsModuleAdminPath = $GLOBALS['xoops']->path('www/' . $GLOBALS['xoopsModule']->getInfo('dirmoduleadmin'));
-require_once "{$xoopsModuleAdminPath}/moduleadmin.php";
+if (false !== ($moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName))) {
+} else {
+    $moduleHelper = Xmf\Module\Helper::getHelper('system');
+}
+/** @var Xmf\Module\Admin $adminObject */
+$adminObject = Xmf\Module\Admin::getInstance();
 
 $myts = MyTextSanitizer::getInstance();
+
 if (!isset($GLOBALS['xoopsTpl']) || !($GLOBALS['xoopsTpl'] instanceof XoopsTpl)) {
     require_once $GLOBALS['xoops']->path('class/template.php');
     $xoopsTpl = new XoopsTpl();
 }
 
-//include_once(XOOPS_ROOT_PATH."/class/xoopsmodule.php");
-require_once $GLOBALS['xoops']->path("modules/{$moduleDirName}/include/functions.php");
+$pathIcon16      = Xmf\Module\Admin::iconUrl('', 16);
+$pathIcon32      = Xmf\Module\Admin::iconUrl('', 32);
+$pathModIcon32 = $moduleHelper->getModule()->getInfo('modicons32');
+
+// Load language files
+$moduleHelper->loadLanguage('admin');
+$moduleHelper->loadLanguage('modinfo');
+$moduleHelper->loadLanguage('main');
 
 //$mod_path = XOOPS_ROOT_PATH.'/modules/'.$xoopsModule->dirname();
 define('MOD_PATH', XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname());
@@ -47,25 +53,7 @@ define('MOD_DIR', $xoopsModule->dirname());
 
 define('TAB_INDEX', 1);
 define('TAB_PERMISSION', 10);
-
-if ($xoopsUser) {
-    $xoopsModule = XoopsModule::getByDirname('repair');
-    if (!$xoopsUser->isAdmin($xoopsModule->mid())) {
-        redirect_header($xoopsConfig['xoops_url'] . ' / ', 3, _NOPERM);
-        exit();
-    }
-} else {
-    redirect_header($xoopsConfig['xoops_url'] . ' / ', 3, _NOPERM);
-    exit();
-}
-
-$GLOBALS['xoopsTpl']->assign('pathIcon16', $pathIcon16);
-$GLOBALS['xoopsTpl']->assign('pathIcon32', $pathIcon32);
-
-// Load language files
-xoops_loadLanguage('admin', $moduleDirName);
-xoops_loadLanguage('modinfo', $moduleDirName);
-xoops_loadLanguage('main', $moduleDirName);
+require_once __DIR__ . '/../include/functions.php';
 
 //xoops_cp_header();
 $adminObject = \Xmf\Module\Admin::getInstance();

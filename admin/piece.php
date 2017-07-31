@@ -199,9 +199,9 @@ if (empty($op)) {
          . "<th><align='left'>"
          . _AM_PIECES_FOURNISSEUR
          . "</center></th>\n"
-         . "<th colspan=\"2\"><center>"
+         . "<th colspan=\"2\"><div class='center;'>"
          . _AM_ACTION
-         . "</center></th>\n";
+         . "</div></th>\n";
 
     $result          = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('garage_pieces') . ' ORDER BY id_cat_piece');
     $pieces          = array();
