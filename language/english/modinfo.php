@@ -89,7 +89,7 @@ define('_MI_GARAGE_DESC_AFF_ONGLET_DOC', "Show the documentation in the admin ar
 // The name of this module
 //define('_MI_GARAGE_NAME',"Repair Shop");
 define('_MI_GARAGE_DIRNAME', basename(dirname(dirname(__DIR__))));
-define('_MI_GARAGE_HELP_HEADER', __DIR__ . '/help/helpheader.html');
+define('_MI_GARAGE_HELP_HEADER', __DIR__ . '/help/helpheader.tpl');
 define('_MI_GARAGE_BACK_2_ADMIN', 'Back to Administration of ');
 
 //define('_MI_GARAGE_HELP_DIR', __DIR__);
