@@ -54,8 +54,17 @@ switch ($op) {
         $tarif_client    = $_POST['tarif_client'];
         $id_cat_piece    = $_POST['id_cat_piece'];
 
-        $sql = sprintf("INSERT INTO %s (ref, designation, id_fournisseur, ref_fournisseur, tarif_ha, tarif_client, id_cat_piece) VALUES ('%s','%s','%s','%s','%s','%s','%s')", $xoopsDB->prefix('garage_pieces'), $ref, $designation, $id_fournisseur, $ref_fournisseur, $tarif_ha, $tarif_client,
-                       $id_cat_piece);
+        $sql = sprintf(
+            "INSERT INTO %s (ref, designation, id_fournisseur, ref_fournisseur, tarif_ha, tarif_client, id_cat_piece) VALUES ('%s','%s','%s','%s','%s','%s','%s')",
+            $xoopsDB->prefix('garage_pieces'),
+            $ref,
+            $designation,
+            $id_fournisseur,
+            $ref_fournisseur,
+            $tarif_ha,
+            $tarif_client,
+                       $id_cat_piece
+        );
 
         $xoopsDB->queryF($sql) || exit('erreur requete :' . $sql . '<br>');
 
@@ -204,7 +213,7 @@ if (empty($op)) {
          . "</div></th>\n";
 
     $result          = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('garage_pieces') . ' ORDER BY id_cat_piece');
-    $pieces          = array();
+    $pieces          = [];
     $nom_fournisseur = ' ';
     $categorie       = ' ';
 

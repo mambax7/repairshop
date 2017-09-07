@@ -142,7 +142,7 @@ switch ($op) {
         $form->addElement(new XoopsFormText(_AM_CLIENT_EMAIL, 'email', 25, 50, $email));
 
         $ppro    = new XoopsformRadio(_AM_CLIENT_PART_PROF, 'part_prof', $part_prof);
-        $options = array('1' => _AM_CLIENT_PARTICULIER, '2' => _AM_CLIENT_PRO);
+        $options = ['1' => _AM_CLIENT_PARTICULIER, '2' => _AM_CLIENT_PRO];
         $ppro->addOptionArray($options);
         $form->addElement($ppro);
 
@@ -201,7 +201,7 @@ if (empty($op)) {
 
     $result = $xoopsDB->query('SELECT id, nom, prenom, cp, ville FROM ' . $xoopsDB->prefix('garage_clients') . ' ORDER BY id');
 
-    echo "<table class=\"outer\" width=\"100%\">\n" . '<th><div class='center;'>' . _AM_CLIENT_NOM . ' / ' . _AM_CLIENT_PRENOM . "</div></th>\n" . '<th><div class='center;'>' . _AM_CLIENT_CP . ' - ' . _AM_CLIENT_VILLE . "</div></th>\n" . "<th colspan=\"2\"><div class='center;'>" . _AM_ACTION . "</div></th>\n";
+    echo "<table class=\"outer\" width=\"100%\">\n" . "<th><div class='center;'>" . _AM_CLIENT_NOM . ' / ' . _AM_CLIENT_PRENOM . "</div></th>\n" . "<th><div class='center;'>" . _AM_CLIENT_CP . ' - ' . _AM_CLIENT_VILLE . "</div></th>\n" . "<th colspan=\"2\"><div class='center;'>" . _AM_ACTION . "</div></th>\n";
     //      ."<th><div class='center;'>"._AM_ACTION."</div></th>\n";
 
     while ((list($id, $nom, $prenom, $cp, $ville) = $xoopsDB->fetchRow($result)) !== false) {
@@ -235,7 +235,7 @@ if (empty($op)) {
     $form->addElement(new XoopsFormText(_AM_CLIENT_EMAIL, 'email', 25, 50, ''));
 
     $ppro    = new XoopsformRadio(_AM_CLIENT_PART_PROF, 'part_prof', '');
-    $options = array('1' => _AM_CLIENT_PARTICULIER, '2' => _AM_CLIENT_PRO);
+    $options = ['1' => _AM_CLIENT_PARTICULIER, '2' => _AM_CLIENT_PRO];
     $ppro->addOptionArray($options);
     $form->addElement($ppro);
 

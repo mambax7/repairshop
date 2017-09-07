@@ -39,8 +39,10 @@ define('_MI_GARAGE_DESC_MECAT1', "<b>Op&eacute;rations courantes</b><br>Op&eacut
 define('_MI_GARAGE_MECAT2', 'Taux horaire T2 M&eacute;canique');
 define('_MI_GARAGE_DESC_MECAT2', '<b>Op&eacute;rations complexes</b><br>Op&eacute;rations de r&eacute;vision, r&eacute;fection et r&eacute;glages m&eacute;caniques,&eacute;lectrique et hydraulique, remplacement de pare-brise coll&eacute;s.');
 define('_MI_GARAGE_MECAT3', 'Taux horaire T3 M&eacute;canique');
-define('_MI_GARAGE_DESC_MECAT3',
-       "<b>Op&eacute;rations haute technologie</b><br>Diagnostics,r&eacute;vision, r&eacute;fection et r&eacute;glage de syst&egrave;mes relatifs &agrave; l'&eacute;lectronique, turbo, climatisation, compresseur, ABS, BV automatique, pompe hydraulique ,et de contr&ocirc;le et r&eacute;glage d'injection de diesel ou essence effectu&eacute;es au banc, de m&ecirc;me que les controles et r&eacute;glages de trains avant et arri&egrave;re.");
+define(
+    '_MI_GARAGE_DESC_MECAT3',
+       "<b>Op&eacute;rations haute technologie</b><br>Diagnostics,r&eacute;vision, r&eacute;fection et r&eacute;glage de syst&egrave;mes relatifs &agrave; l'&eacute;lectronique, turbo, climatisation, compresseur, ABS, BV automatique, pompe hydraulique ,et de contr&ocirc;le et r&eacute;glage d'injection de diesel ou essence effectu&eacute;es au banc, de m&ecirc;me que les controles et r&eacute;glages de trains avant et arri&egrave;re."
+);
 define('_MI_GARAGE_CARROT1', 'Taux horaire T1 Carrosserie');
 define('_MI_GARAGE_DESC_CARROT1', '<b>Op&eacute;rations courantes</b><br>Op&eacute;rations de d&eacute;pose, pose et remplacement de carrosserie en &eacute;change standard.');
 define('_MI_GARAGE_CARROT2', 'Taux horaire T2 Carrosserie');

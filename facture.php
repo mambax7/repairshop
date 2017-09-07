@@ -126,7 +126,7 @@ while ((list($id2, $id_vehic, $kilometrage, $date_debut, $date_fin, $delai, $id_
     $remise_pces          = 0;
     $montant_net_forfaits = 0;
 
-    $facture_detail_mod = array();
+    $facture_detail_mod = [];
 
     $i                   = 0;
     $facture_observation = '';
@@ -185,7 +185,7 @@ while ((list($id2, $id_vehic, $kilometrage, $date_debut, $date_fin, $delai, $id_
     $montant_net_mod = ($montant_modcaro - $remise_caro) + ($montant_modmeca - $remise_meca);
 
     $i                     = 0;
-    $facture_detail_pieces = array();
+    $facture_detail_pieces = [];
     $montant_pieces        = 0;
     //liste des pieces
     $reqp = $xoopsDB->query('SELECT id, id_piece, designation, id_fournisseur, quantite, tarif_client, remise_pieces FROM ' . $xoopsDB->prefix('garage_inter_pieces') . ' WHERE id_inter=' . $id_inter);
@@ -230,7 +230,7 @@ while ((list($id2, $id_vehic, $kilometrage, $date_debut, $date_fin, $delai, $id_
     // forfaits
 
     $i                       = 0;
-    $facture_detail_forfaits = array();
+    $facture_detail_forfaits = [];
     $montant_forfaits        = 0;
     $reqf                    = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('garage_inter_forfait') . ' WHERE id_inter=' . $id_inter);
     while ((list($idkey, $id_interv, $id_forfait, $designation_ff, $ref_fournisseur, $quantite_ff, $tarif_client, $remise_forfait) = $xoopsDB->fetchRow($reqf)) !== false) {

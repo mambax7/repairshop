@@ -129,7 +129,7 @@ if (empty($op)) {
 
     doc_info('employe');
 
-    echo "<table class=\"outer\" width=\"100%\">\n" . '<th><div class='center;'>' . _AM_GARAGE_EMPL_NAME . "</div></th>\n" . '<th><div class='center;'>' . _AM_GARAGE_EMPL_PREN . "</div></th>\n" . "<th colspan=\"2\"><div class='center;'>" . _AM_ACTION . "</div></th>\n";
+    echo "<table class='outer' width='100%'>\n" . "<th><div class='center;'>" . _AM_GARAGE_EMPL_NAME . "</div></th>\n" . "<th><div class='center;'>" . _AM_GARAGE_EMPL_PREN . "</div></th>\n" . "<th colspan=\"2\"><div class='center;'>" . _AM_ACTION . "</div></th>\n";
 
     $result = $xoopsDB->query('SELECT id_empl, nom_empl, pre_empl FROM ' . $xoopsDB->prefix('garage_employe') . ' ORDER BY nom_empl');
     while ((list($id_empl, $nom_empl, $pre_empl) = $xoopsDB->fetchRow($result)) !== false) {

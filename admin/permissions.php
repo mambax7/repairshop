@@ -39,8 +39,8 @@ switch ($op) {
     default:
         global $xoopsDB, $xoopsModule;
 
-        $item_list = array();
-        $block     = array();
+        $item_list = [];
+        $block     = [];
         $module_id = $xoopsModule->getVar('mid');
         xoops_cp_header();
 
@@ -53,7 +53,7 @@ switch ($op) {
         echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_GROUPPERMISSIONS . '</legend>';
         if ($permissioncount > 0) {
             while ($myrow = $xoopsDB->fetcharray($result)) {
-                $item_list          = array();
+                $item_list          = [];
                 $item_list['cid']   = $myrow['CID'];
                 $item_list['title'] = $myrow['pagetitle'];
 

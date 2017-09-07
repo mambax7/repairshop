@@ -123,7 +123,7 @@ if (empty($op)) {
     doc_info('Cat_Piece');
 
     $result = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('garage_cat_piece') . ' ORDER BY id');
-    $cat    = array();
+    $cat    = [];
 
     echo "<table class=\"outer\" width=\"100%\">\n" . "<th><align='left'>" . _AM_CAT_NOM . "</center></th>\n" . "<th colspan=\"2\"><div class='center;'>" . _AM_ACTION . "</div></th>\n";
 

@@ -17,7 +17,7 @@
  * @author       XOOPS Development Team
  */
 
-defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 /**
  * Class marquee_Object
@@ -30,7 +30,7 @@ class marquee_Object extends XoopsObject
      */
     public function toArray($format = 's')
     {
-        $ret = array();
+        $ret = [];
         foreach ($this->vars as $k => $v) {
             $ret[$k] = $this->getVar($k, $format);
         }
@@ -141,7 +141,7 @@ class RepairPersistableObjectHandler extends XoopsPersistableObjectHandler
      */
     public function getObjects($criteria = null, $id_as_key = false, $as_object = true)
     {
-        $ret   = array();
+        $ret   = [];
         $limit = $start = 0;
         $sql   = 'SELECT * FROM ' . $this->table;
         if (isset($criteria) && is_subclass_of($criteria, 'criteriaelement')) {
@@ -173,7 +173,7 @@ class RepairPersistableObjectHandler extends XoopsPersistableObjectHandler
      */
     public function convertResultSet($result, $id_as_key = false, $as_object = true)
     {
-        $ret = array();
+        $ret = [];
         while ($myrow = $this->db->fetchArray($result)) {
             $obj = $this->create(false);
             $obj->assignVars($myrow);
@@ -181,7 +181,7 @@ class RepairPersistableObjectHandler extends XoopsPersistableObjectHandler
                 if ($as_object) {
                     $ret[] =& $obj;
                 } else {
-                    $row     = array();
+                    $row     = [];
                     $vars    = $obj->getVars();
                     $tbl_tmp = array_keys($vars);
                     foreach ($tbl_tmp as $i) {
@@ -193,7 +193,7 @@ class RepairPersistableObjectHandler extends XoopsPersistableObjectHandler
                 if ($as_object) {
                     $ret[$myrow[$this->keyName]] =& $obj;
                 } else {
-                    $row     = array();
+                    $row     = [];
                     $vars    = $obj->getVars();
                     $tbl_tmp = array_keys($vars);
                     foreach ($tbl_tmp as $i) {
@@ -221,7 +221,7 @@ class RepairPersistableObjectHandler extends XoopsPersistableObjectHandler
             $sql .= ' ' . $criteria->renderWhere();
         }
         $result = $this->db->query($sql);
-        $ret    = array();
+        $ret    = [];
         while ($myrow = $this->db->fetchArray($result)) {
             $ret[] = $myrow[$this->keyName];
         }
@@ -240,7 +240,7 @@ class RepairPersistableObjectHandler extends XoopsPersistableObjectHandler
      */
     public function getList(CriteriaElement $criteria = null, $limit = 0, $start = 0)
     {
-        $ret = array();
+        $ret = [];
         if ($criteria == null) {
             $criteria = new CriteriaCompo();
         }
@@ -306,7 +306,7 @@ class RepairPersistableObjectHandler extends XoopsPersistableObjectHandler
 
             return $count;
         } else {
-            $ret = array();
+            $ret = [];
             while (list($id, $count) = $this->db->fetchRow($result)) {
                 $ret[$id] = $count;
             }
@@ -325,7 +325,7 @@ class RepairPersistableObjectHandler extends XoopsPersistableObjectHandler
     public function delete($obj, $force = false)
     {
         if (is_array($this->keyName)) {
-            $clause = array();
+            $clause = [];
             $vnb    = count($this->keyName);
             for ($i = 0; $i < $vnb; ++$i) {
                 $clause[] = $this->keyName[$i] . ' = ' . $obj->getVar($this->keyName[$i]);

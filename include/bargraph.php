@@ -10,7 +10,7 @@ The code in the example returns the graph in PNG format. You can obviously chang
 
 // This array of values is just here for the example.
 
-$values = array('5', '1', '3', '20', '7.5');
+$values = ['5', '1', '3', '20', '7.5'];
 
 // Get the total number of columns we are going to plot
 

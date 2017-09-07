@@ -164,7 +164,7 @@ switch ($op) {
 
         // ajout de pieces
         $req1              = $xoopsDB->query('SELECT p.id, p.ref, p.designation, f.nom FROM ' . $xoopsDB->prefix('garage_pieces') . ' p INNER JOIN ' . $xoopsDB->prefix('garage_fournisseur') . ' f ON f.id = p.id_fournisseur ORDER BY designation ASC');
-        $list_id_pieces    = array();
+        $list_id_pieces    = [];
         $list_id_pieces[0] = _AM_PCE_MAG;
         while ((list($id_piece, $ref, $designation, $nom_fournisseur) = $xoopsDB->fetchRow($req1)) !== false) {
             $list_id_pieces[$id_piece] = $designation . ' - ' . $nom_fournisseur;
@@ -242,7 +242,7 @@ if (empty($op)) {
     doc_info('forfait');
 
     $result = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('garage_forfait') . ' ORDER BY id');
-    $cat    = array();
+    $cat    = [];
 
     echo "<table class=\"outer\" width=\"100%\">\n"
          . "<th><align='left'>"

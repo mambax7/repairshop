@@ -20,7 +20,7 @@
 $moduleDirName = basename(__DIR__);
 //global $xoopsDB, $xoopsUser, $xoopsConfig, $myts, $xoopsModule, $xoopsModuleConfig;
 
-$modversion = array(
+$modversion = [
     'version'             => 1.51,
     'module_status'       => 'Beta 1',
     'release_date'        => '2016/03/28', //yyyy/mm/dd
@@ -44,7 +44,7 @@ $modversion = array(
     'min_php'             => '5.5',
     'min_xoops'           => '2.5.9',
     'min_admin'           => '1.2',
-    'min_db'              => array('mysql' => '5.5'),
+    'min_db'              => ['mysql' => '5.5'],
     // images
     'image'               => 'assets/images/logoModule.png',
     'iconsmall'           => 'assets/images/iconsmall.png',
@@ -86,7 +86,7 @@ $modversion = array(
     //  'onUninstall'         => 'include/onuninstall.php',
     //    'onUpdate'            => 'include/onupdate.php'
 
-);
+];
 
 //about
 //$modversion["author_website_url"] = "http://www.philox.info/";
@@ -97,7 +97,7 @@ $modversion = array(
 $modversion['sqlfile']['mysql'] = 'sql/mysql.sql';
 
 // Tables created by sql file (without prefix!)
-$modversion['tables'] = array(
+$modversion['tables'] = [
     'garage_clients',
     'garage_vehicule',
     'garage_intervention',
@@ -113,7 +113,7 @@ $modversion['tables'] = array(
     'garage_employe',
     'garage_num_doc',
     'garage_doc'
-);
+];
 
 // Blocks
 $modversion['blocks'][1]['file']      = 'garage_ec.php';

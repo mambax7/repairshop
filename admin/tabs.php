@@ -19,281 +19,279 @@ class XoopsTabs
 
 /**
  * an array of tabs
- * @var array   $tabs   
+ * @var array   $tabs
  */
- var	$tabs=array();
+    public $tabs= [];
 
-/**
- * an array of sublinks to display under an active tab
- * @var array   $tabs   
- */
- var	$subs=array();
+    /**
+     * an array of sublinks to display under an active tab
+     * @var array   $tabs
+     */
+    public $subs= [];
 
-/**
- * the name of the current tab
- * @var string  $current_tab    
- */
- var $current_tab;
+    /**
+     * the name of the current tab
+     * @var string  $current_tab
+     */
+    public $current_tab;
 
-/**
- * the name of the current sub link
- * @var string  $current_sub    
- */
- var $current_sub;
+    /**
+     * the name of the current sub link
+     * @var string  $current_sub
+     */
+    public $current_sub;
 
-/**
- * This is a name used in your style sheet
- * @var string  $_style    
- */
- var $_style;
+    /**
+     * This is a name used in your style sheet
+     * @var string  $_style
+     */
+    public $_style;
 
-/**
- * set to true if build in style sheet is to be used    
- * @var bool  $_return_style	
- */
- var $_return_style = true;
+    /**
+     * set to true if build in style sheet is to be used
+     * @var bool  $_return_style
+     */
+    public $_return_style = true;
 
-/**
- * Provides a way to add some text to far right side of tabs
- * @var string  $_righttext     set this to plain text to show far right side of tabs
- */
- var $_righttxt = "XoopsTabs";
+    /**
+     * Provides a way to add some text to far right side of tabs
+     * @var string  $_righttext     set this to plain text to show far right side of tabs
+     */
+    public $_righttxt = "XoopsTabs";
 
-/**
-* XoopsTabs class constructor 
-*/
- function XoopsTabs( $style = 'xtabs' )
- {
-   $this->_style = $style;
-    if ( $this->_style != 'xtabs' ) {
-   	$this->_return_style = false;
-	}
- }
+    /**
+    * XoopsTabs class constructor
+    */
+    public function XoopsTabs($style = 'xtabs')
+    {
+        $this->_style = $style;
+        if ($this->_style != 'xtabs') {
+            $this->_return_style = false;
+        }
+    }
 
-/**
- * Returns array of tabs
- * @param   void
- */
- function getTabs()
- {
-  return $this->tabs;
- }
+    /**
+     * Returns array of tabs
+     * @param   void
+     */
+    public function getTabs()
+    {
+        return $this->tabs;
+    }
 
-/**
- * Returns array of sub tabs
- * @param   void
- */
- function getSubs()
- {
-  return $this->subs;
- }
+    /**
+     * Returns array of sub tabs
+     * @param   void
+     */
+    public function getSubs()
+    {
+        return $this->subs;
+    }
 
-/**
- * Returns a multidimensional array of tabs with active tab info and current sub links
- * @param   void
- */
- function getSet()
- {
-  return $this->fetchTabSet();
- }
+    /**
+     * Returns a multidimensional array of tabs with active tab info and current sub links
+     * @param   void
+     */
+    public function getSet()
+    {
+        return $this->fetchTabSet();
+    }
 
- /**
-  * Print the tabs to the browser
-  */
- function display()
- {
-   print $this->render();
- }
+    /**
+     * Print the tabs to the browser
+     */
+    public function display()
+    {
+        print $this->render();
+    }
 
- /**
-  * Assigns the html for all tabs to a single smarty tag.
-  */
- function assign()
- {
- 	global $xoopsTpl;
-   $xoopsTpl->assign( $this->_style, $this->render() );
- }
+    /**
+     * Assigns the html for all tabs to a single smarty tag.
+     */
+    public function assign()
+    {
+        global $xoopsTpl;
+        $xoopsTpl->assign($this->_style, $this->render());
+    }
  
-/**
- * Method for setting the current tab or sub tab
- * @param	string	$name	name of the current link
- * @param	string	$set	either 'tabs' or 'subs' 
- */
- function setCurrent( $name, $set='tabs' )
- {
-  if ( $set == 'tabs' ){
-   $this->current_tab = $name;
-  }
-  if ( $set == 'subs' ){
-   $this->current_sub = $name;
-  }
- }
+    /**
+     * Method for setting the current tab or sub tab
+     * @param	string	$name	name of the current link
+     * @param	string	$set	either 'tabs' or 'subs'
+     */
+    public function setCurrent($name, $set='tabs')
+    {
+        if ($set == 'tabs') {
+            $this->current_tab = $name;
+        }
+        if ($set == 'subs') {
+            $this->current_sub = $name;
+        }
+    }
 
- /**
-  * Returns the name of the current tab
-  * @return string
-  */
- function getCurrent()
- {
-     return $this->current_tab;
- }
+    /**
+     * Returns the name of the current tab
+     * @return string
+     */
+    public function getCurrent()
+    {
+        return $this->current_tab;
+    }
 
-/**
- * Method to add a single tab
- * @param	string	$name	a unique name for your link
- * @param	string	$link	the url for your link 
- * @param	string	$label	the text to display for link
- * @param	string	$weight	the display order ****   <--  doesn't do anything yet	
- */
- function addTab( $name, $link, $label, $weight=10 )
- {
-  $this->addSet( 'tabs', $name, $link, $label, $weight );
- }
+    /**
+     * Method to add a single tab
+     * @param	string	$name	a unique name for your link
+     * @param	string	$link	the url for your link
+     * @param	string	$label	the text to display for link
+     * @param	string	$weight	the display order ****   <--  doesn't do anything yet
+     */
+    public function addTab($name, $link, $label, $weight=10)
+    {
+        $this->addSet('tabs', $name, $link, $label, $weight);
+    }
 
-/**
- * Method to add multiple tabs from an array of data
- * @param	array	$tabs 
- */
- function addTabArray( $tabs )
- {
-  foreach ( $tabs as $name=>$tab )
-  {
-   $this->addSet( 'tabs', $name, $tab['link'], $tab['label'], $tab['weight'] );
-  }
- }
+    /**
+     * Method to add multiple tabs from an array of data
+     * @param	array	$tabs
+     */
+    public function addTabArray($tabs)
+    {
+        foreach ($tabs as $name=>$tab) {
+            $this->addSet('tabs', $name, $tab['link'], $tab['label'], $tab['weight']);
+        }
+    }
 
-/**
- * Method to add a single sub link for display below an active tab
- * @param	string	$name	a unique name for your link
- * @param	string	$link	the url for your link 
- * @param	string	$label	the text to display for link
- * @param	string	$weight	the display order ****   <--  doesn't do anything yet	
- * @param	string	$parent	the name of the tab which this sublink should display under
- */
- function addSub( $name, $link, $label, $weight, $parent )
- {
-  $this->addSet( 'subs', $name, $link, $label, $weight, $parent );
- }
+    /**
+     * Method to add a single sub link for display below an active tab
+     * @param	string	$name	a unique name for your link
+     * @param	string	$link	the url for your link
+     * @param	string	$label	the text to display for link
+     * @param	string	$weight	the display order ****   <--  doesn't do anything yet
+     * @param	string	$parent	the name of the tab which this sublink should display under
+     */
+    public function addSub($name, $link, $label, $weight, $parent)
+    {
+        $this->addSet('subs', $name, $link, $label, $weight, $parent);
+    }
 
-/**
- * Method to add multiple sub links from an array of data
- * @param	array	$subs 
- */
- function addSubArray( $subs )
- {
-  foreach ( $subs as $name=>$sub )
-  {
-   $this->addSet( 'subs', $name, $tab['link'], $tab['label'], $tab['weight'] );
-  }
- }
+    /**
+     * Method to add multiple sub links from an array of data
+     * @param	array	$subs
+     */
+    public function addSubArray($subs)
+    {
+        foreach ($subs as $name=>$sub) {
+            $this->addSet('subs', $name, $tab['link'], $tab['label'], $tab['weight']);
+        }
+    }
 
-/**
- * Method is used by the addTab and addSub methods and should not be called directly
- */
- function addSet( $set, $name, $link, $label, $weight, $parent=null )
- {
-  if ( $set == 'tabs' )
-  {
-   $this->tabs[$name]['link'] = $link;
-   $this->tabs[$name]['label'] = $label;
-   $this->tabs[$name]['weight'] = $weight;
-   $this->tabs[$name]['name'] = $name;
-  } elseif ( $set == 'subs' ){
-   $this->subs[$parent][$name]['link'] = $link;
-   $this->subs[$parent][$name]['label'] = $label;
-   $this->subs[$parent][$name]['weight'] = $weight;
-   $this->subs[$parent][$name]['name'] = $name;
-  }
- }
+    /**
+     * Method is used by the addTab and addSub methods and should not be called directly
+     */
+    public function addSet($set, $name, $link, $label, $weight, $parent=null)
+    {
+        if ($set == 'tabs') {
+            $this->tabs[$name]['link'] = $link;
+            $this->tabs[$name]['label'] = $label;
+            $this->tabs[$name]['weight'] = $weight;
+            $this->tabs[$name]['name'] = $name;
+        } elseif ($set == 'subs') {
+            $this->subs[$parent][$name]['link'] = $link;
+            $this->subs[$parent][$name]['label'] = $label;
+            $this->subs[$parent][$name]['weight'] = $weight;
+            $this->subs[$parent][$name]['name'] = $name;
+        }
+    }
 
-/**
- * Method is used to clear all assigned sub links
- * @param   void
- */
- function clearSubs()
- {
-  $this->subs = null;
- }
+    /**
+     * Method is used to clear all assigned sub links
+     * @param   void
+     */
+    public function clearSubs()
+    {
+        $this->subs = null;
+    }
 
-/**
- * Method is used to build a complete set of data which can then be easily used
- * to display tabs in a webpage. This method should not be called directly and 
- * can be accessed via the getSet() method.
- * @return  array   full tab data and sub links for active tab
- * 
- */
- function fetchTabSet()
- {
-  $set['tabs'] = $this->tabs;	
-  $subs = $this->subs;
-  foreach ( $subs as $k=>$v )
-  {
-   if ( $k == $this->current_tab )
-   {
-    $set['subs'] = $v;
-   }
-  }
-  if ( isset($this->current_tab) ){
-   $set['tabs'][$this->current_tab]['current'] = 1;
-  }
-  if ( isset($this->current_sub) ){
-      $set['subs'][$this->current_sub]['current'] = 1;
-  }
-  $set['tabcount'] = count($set['tabs']);
-  if ( isset($set['subs'])) {
-   $set['subcount'] = count($set['subs']);
-  } 
+    /**
+     * Method is used to build a complete set of data which can then be easily used
+     * to display tabs in a webpage. This method should not be called directly and
+     * can be accessed via the getSet() method.
+     * @return  array   full tab data and sub links for active tab
+     *
+     */
+    public function fetchTabSet()
+    {
+        $set['tabs'] = $this->tabs;
+        $subs = $this->subs;
+        foreach ($subs as $k=>$v) {
+            if ($k == $this->current_tab) {
+                $set['subs'] = $v;
+            }
+        }
+        if (isset($this->current_tab)) {
+            $set['tabs'][$this->current_tab]['current'] = 1;
+        }
+        if (isset($this->current_sub)) {
+            $set['subs'][$this->current_sub]['current'] = 1;
+        }
+        $set['tabcount'] = count($set['tabs']);
+        if (isset($set['subs'])) {
+            $set['subcount'] = count($set['subs']);
+        }
 
- return $set;	
- }
+        return $set;
+    }
  
-  /**
-  * Return the html which makes up the tabs.
-  */
- function render()
- {
-   $html = '';
-   if ( $this->_return_style ) $html .= $this->getStyle();
-   $tabs = $this->getSet();
-   $html .= "<table width='100%' border='0' cellspacing='0' cellpadding='0'>\n
+    /**
+    * Return the html which makes up the tabs.
+    */
+    public function render()
+    {
+        $html = '';
+        if ($this->_return_style) {
+            $html .= $this->getStyle();
+        }
+        $tabs = $this->getSet();
+        $html .= "<table width='100%' border='0' cellspacing='0' cellpadding='0'>\n
 		  <tr>\n
 			<td><div id='".$this->_style."'>\n
 		  <ul>\n";
-   foreach ( $tabs['tabs'] as $k=>$tab )
-   {
-     $html .= "<li";
-	 if ( $tab['current'] == 1 ) $html .= " id='current'";
-	 $html .= "><a href='".$tab['link']."'>".$tab['label']."</a></li>\n";
-   }
-	  $html .= "<li id='rightside'>".$this->_righttxt."</li>\n
+        foreach ($tabs['tabs'] as $k=>$tab) {
+            $html .= "<li";
+            if ($tab['current'] == 1) {
+                $html .= " id='current'";
+            }
+            $html .= "><a href='".$tab['link']."'>".$tab['label']."</a></li>\n";
+        }
+        $html .= "<li id='rightside'>".$this->_righttxt."</li>\n
 	 	  </ul>\n
 		</div></td>\n
 		  </tr>\n
 		  <tr>\n
 			<td height='30'>\n
 			<div>&nbsp; &nbsp;";
-   $n = 0;
-   foreach ( $tabs['subs'] as $k=>$sub )
-   {
-     if ( $n > 0 ) $html .= "| &nbsp;"; 
-   	 $html .= "<a href='".$sub['link']."'>".$sub['label']."</a> &nbsp;";
-   $n++;
-   }
-     $html .= "</div>\n
+        $n = 0;
+        foreach ($tabs['subs'] as $k=>$sub) {
+            if ($n > 0) {
+                $html .= "| &nbsp;";
+            }
+            $html .= "<a href='".$sub['link']."'>".$sub['label']."</a> &nbsp;";
+            $n++;
+        }
+        $html .= "</div>\n
 			</td>\n
 		  </tr>\n
-		</table>";	 
-   echo 'llmjklmklm '.$html;				
-   return $html;
-
- }
+		</table>";
+        echo 'llmjklmklm '.$html;
+        return $html;
+    }
  
-/**
-* Create a default style sheet
-*/ 
- function getStyle()
- {
-    $style = "<style type='text/css' media='screen'>
+    /**
+    * Create a default style sheet
+    */
+    public function getStyle()
+    {
+        $style = "<style type='text/css' media='screen'>
 		#xtabs {
 		  float:left;
 		  width:100%;
@@ -343,10 +341,6 @@ class XoopsTabs
 		  }		\r\n
 		</style>
 	";
-	return $style;
- }
-
+        return $style;
+    }
 } // END CLASS
-
-
-?>

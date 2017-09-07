@@ -138,7 +138,7 @@ if (empty($op)) {
     doc_info('Fournisseur');
 
     $result      = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('garage_fournisseur') . ' ORDER BY id');
-    $fournisseur = array();
+    $fournisseur = [];
     //    $type = array();
 
     echo "<table class=\"outer\" width=\"100%\">\n"

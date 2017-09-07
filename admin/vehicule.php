@@ -69,9 +69,29 @@ switch ($op) {
         $date_cg           = $_POST['date_cg'];
         $observation       = $_POST['observation'];
 
-        $sql = sprintf("INSERT INTO %s (immat, id_proprietaire, date_mec, kilometrage, dernier_ct, prochain_ct, id_marque, gamme, modele_version, energie, genre, vin, date_garantie, date_distribution, km_distribution, date_vidange, km_vidange, date_cg, observation) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
-                       $xoopsDB->prefix('garage_vehicule'), $immat, $id_proprietaire, $date_mec, $kilometrage, $dernier_ct, $prochain_ct, $id_marque, $gamme, $modele_version, $energie, $genre, $vin, $date_garantie, $date_distribution, $km_distribution, $date_vidange, $km_vidange, $date_cg,
-                       $observation);
+        $sql = sprintf(
+            "INSERT INTO %s (immat, id_proprietaire, date_mec, kilometrage, dernier_ct, prochain_ct, id_marque, gamme, modele_version, energie, genre, vin, date_garantie, date_distribution, km_distribution, date_vidange, km_vidange, date_cg, observation) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+                       $xoopsDB->prefix('garage_vehicule'),
+            $immat,
+            $id_proprietaire,
+            $date_mec,
+            $kilometrage,
+            $dernier_ct,
+            $prochain_ct,
+            $id_marque,
+            $gamme,
+            $modele_version,
+            $energie,
+            $genre,
+            $vin,
+            $date_garantie,
+            $date_distribution,
+            $km_distribution,
+            $date_vidange,
+            $km_vidange,
+            $date_cg,
+                       $observation
+        );
 
         $xoopsDB->queryF($sql) || exit('Erreur requete : ' . $sql . '<br>');
 

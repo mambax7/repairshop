@@ -49,7 +49,7 @@ function repair_search($queryarray, $andor, $limit, $offset, $userid)
     }
     $sql    .= 'ORDER BY date_devis DESC';
     $result = $xoopsDB->query($sql, $limit, $offset);
-    $ret    = array();
+    $ret    = [];
     $i      = 0;
     /*
         list($id2, $id_vehic, $kilometrage, $date_debut, $date_fin, $delai, $id_inter_recurrente, $description, $observation, $date_devis, $date_acceptation, $montant, $acompte_verse, $solde, $hmeca_t1, $hmeca_t2, $hmeca_t3, $hcarro_t1, $hcarro_t2, $hcarro_t3, $tmeca_t1, $tmeca_t2, $tmeca_t3, $tcarro_t1, $tcarro_t2, $tcarro_t3 ,$remise_meca, $remise_caro, $remise_forfait, $numero_devis, $numero_facture, $id_vehicule, $immat, $id_marque, $gamme, $modele_version, $id_proprietaire, $civilite, $nom, $prenom, $teldom, $telport, $marque) = $xoopsDB->fetchrow($sql);

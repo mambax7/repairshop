@@ -123,7 +123,7 @@ if (empty($op)) {
     doc_info('marque');
 
     $result = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('garage_marque') . ' ORDER BY id');
-    $marque = array();
+    $marque = [];
 
     echo "<table class=\"outer\" width=\"100%\">\n" . "<th><align='left'>" . _AM_MARQUE_NOM . "</center></th>\n" . "<th colspan=\"2\"><div class='center;'>" . _AM_ACTION . "</div></th>\n";
 

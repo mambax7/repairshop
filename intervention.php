@@ -45,12 +45,10 @@ if (is_object($xoopsUser)) {
     $xoopsModule = XoopsModule::getByDirname($moduleDirName);
     if (!$xoopsUser->isAdmin($xoopsModule->mid())) {
         redirect_header(XOOPS_URL . '/', 3, _NOPERM);
-        exit();
     }
     $admintest = 1;
 } else {
     redirect_header(XOOPS_URL . '/', 3, _NOPERM);
-    exit();
 }
 
 $myts = MyTextSanitizer::getInstance();
@@ -150,7 +148,7 @@ if (empty($op)) {
     $myts = MyTextSanitizer::getInstance();
 
     $req1                = $xoopsDB->query('SELECT id, immat, id_marque, gamme, modele_version, id_proprietaire FROM ' . $xoopsDB->prefix('garage_vehicule') . ' ORDER BY immat ASC');
-    $list_id_vehicule    = array();
+    $list_id_vehicule    = [];
     $list_id_vehicule[0] = '---- NA ----';
     while ((list($id_vehic, $immat, $id_marque, $gamme, $modele_version, $id_proprietaire) = $xoopsDB->fetchRow($req1)) !== false) {
         $sql = sprintf('SELECT * FROM ' . $xoopsDB->prefix('garage_clients') . " WHERE id='%s'", $id_proprietaire);

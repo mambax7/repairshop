@@ -59,7 +59,7 @@ echo "<table class=\"outer\" width=\"100%\">\n"
      . "</div></th>\n";
 
 $result     = $xoopsDB->query('SELECT id_serv, nom_serv, pere, chef, secretaire, adjoint FROM ' . $xoopsDB->prefix('service') . " WHERE id_serv='" . $id_service . "'");
-$service    = array();
+$service    = [];
 $service[0] = '---- NA ----';
 while ((list($id_serv, $nom_serv, $pere, $chef, $secretaire, $adjoint) = $xoopsDB->fetchRow($result)) !== false) {
     $id_chef           = $chef;

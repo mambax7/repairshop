@@ -25,64 +25,64 @@ function garage_tabsAdminMenu($file)
     // Configuring different tables
     $url    = XOOPS_URL . '/modules/' . $xoopsModule->getVar('dirname') . '/admin';
     $url2   = XOOPS_URL . '/modules/' . $xoopsModule->getVar('dirname');
-    $tabs   = array();
-    $tabs[] = array(
+    $tabs   = [];
+    $tabs[] = [
         'title' => _AM_INTER,
         'url'   => $url . '/intervention.php',
         'color' => ''
-    );
-    $tabs[] = array(
+    ];
+    $tabs[] = [
         'title' => _AM_VEHICULE,
         'url'   => $url . '/vehicule.php',
         'color' => ''
-    );
-    $tabs[] = array(
+    ];
+    $tabs[] = [
         'title' => _AM_CLIENT,
         'url'   => $url . '/client.php',
         'color' => ''
-    );
-    $tabs[] = array(
+    ];
+    $tabs[] = [
         'title' => _AM_FOURNISSEUR,
         'url'   => $url . '/fournisseur.php',
         'color' => ''
-    );
-    $tabs[] = array(
+    ];
+    $tabs[] = [
         'title' => _AM_PIECES,
         'url'   => $url . '/piece.php',
         'color' => ''
-    );
-    $tabs[] = array(
+    ];
+    $tabs[] = [
         'title' => _AM_CAT,
         'url'   => $url . '/cat_piece.php',
         'color' => ''
-    );
-    $tabs[] = array(
+    ];
+    $tabs[] = [
         'title' => _AM_FORFAIT,
         'url'   => $url . '/forfait.php',
         'color' => ''
-    );
-    $tabs[] = array(
+    ];
+    $tabs[] = [
         'title' => _AM_MARQUE,
         'url'   => $url . '/marque.php',
         'color' => ''
-    );
-    $tabs[] = array(
+    ];
+    $tabs[] = [
         'title' => _AM_EMPLOYE,
         'url'   => $url . '/employe.php',
         'color' => ''
-    );
+    ];
 
-    $tabs[] = array(
+    $tabs[] = [
         'title' => '&nbsp;<img src="' . $url2 . '/assets/images/tip.png" alt="' . _AM_DOC . '" title="' . _AM_DOC . '">&nbsp;',
         'url'   => $url . '/gest_doc.php',
         'color' => ''
-    );
+    ];
 
-    $tabs[] = array(
+    $tabs[] = [
         'title' => '&nbsp;<img src="' . $url2 . '/assets/images/trash.jpeg" alt="' . _AM_TRASH . '" title="' . _AM_TRASH . '" height ="12px" width="12px">&nbsp;',
         'url'   => $url . '/trash.php',
         'color' => ''
-    );
+    ];
 
     // Call generic function with correct params
     xoops_tabAdminMenu($xoopsModule, $file, $tabs);
