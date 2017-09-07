@@ -24,7 +24,7 @@ require_once __DIR__ . '/config.inc.php';
 $perm_name = 'XORGACHART';
 $module_id = $xoopsModule->getVar('mid');
 
-$cat[CREATION] = array('name' => 'XXXXX', 'parent' => 0);
+$cat[CREATION] = ['name' => 'XXXXX', 'parent' => 0];
 
 $title_of_form = "Droits d'acc&egrave;s";
 $perm_desc     = 'S&eacute;lectionner les acc&egrave;s pour chaque groupe';
