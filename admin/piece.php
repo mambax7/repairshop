@@ -95,7 +95,7 @@ switch ($op) {
         $res = $xoopsDB->query($sql) || exit('erreur requete :' . $sql . '<br>');
 
         if ($res) {
-            while (($row = $xoopsDB->fetchArray($res)) !== false) {
+            while (false !== ($row = $xoopsDB->fetchArray($res))) {
                 $id              = $row['id'];
                 $ref             = $row['ref'];
                 $designation     = $row['designation'];
@@ -114,7 +114,7 @@ switch ($op) {
         $form = new XoopsThemeForm(_AM_PIECES_MODIFICATION, 'mpieces', "piece.php?op=update&id='" . $id . "'", 'post', true);
 
         $reqcat = $xoopsDB->query('SELECT id, nom FROM ' . $xoopsDB->prefix('garage_cat_piece') . ' ORDER BY nom');
-        while (($row = $xoopsDB->fetchArray($reqcat)) !== false) {
+        while (false !== ($row = $xoopsDB->fetchArray($reqcat))) {
             $categories[$row['id']] = $row['nom'];
         }
         $cat = new XoopsFormSelect(_AM_VEHICULE_CAT_PIECE, 'id_cat_piece', null, 5, false);
@@ -126,7 +126,7 @@ switch ($op) {
         $form->addElement(new XoopsFormText(_AM_PIECES_DESIGNATION, 'designation', 50, 255, $designation));
 
         $req4 = $xoopsDB->query('SELECT id, nom  FROM ' . $xoopsDB->prefix('garage_fournisseur') . ' ORDER BY nom');
-        while (($row = $xoopsDB->fetchArray($req4)) !== false) {
+        while (false !== ($row = $xoopsDB->fetchArray($req4))) {
             $fournisseurs[$row['id']] = $row['nom'];
         }
         $four = new XoopsFormSelect(_AM_FSEUR, 'id_fournisseur', null, 5, false);
@@ -217,17 +217,17 @@ if (empty($op)) {
     $nom_fournisseur = ' ';
     $categorie       = ' ';
 
-    while ((list($id, $ref, $designation, $id_fournisseur, $ref_fournisseur, $tarif_ha, $tarif_client, $id_cat_piece) = $xoopsDB->fetchRow($result)) !== false) {
+    while (false !== (list($id, $ref, $designation, $id_fournisseur, $ref_fournisseur, $tarif_ha, $tarif_client, $id_cat_piece) = $xoopsDB->fetchRow($result))) {
         $pieces[$id] = $id;
-        if ($id_fournisseur != 0) {
+        if (0 != $id_fournisseur) {
             $req4 = $xoopsDB->query('SELECT id, nom  FROM ' . $xoopsDB->prefix('garage_fournisseur') . " where id=$id_fournisseur");
-            while (($row = $xoopsDB->fetchArray($req4)) !== false) {
+            while (false !== ($row = $xoopsDB->fetchArray($req4))) {
                 $nom_fournisseur = $row['nom'];
             }
         }
-        if ($id_cat_piece != 0) {
+        if (0 != $id_cat_piece) {
             $req5 = $xoopsDB->query('SELECT id, nom  FROM ' . $xoopsDB->prefix('garage_cat_piece') . " where id=$id_cat_piece");
-            while (($row = $xoopsDB->fetchArray($req5)) !== false) {
+            while (false !== ($row = $xoopsDB->fetchArray($req5))) {
                 $categorie = $row['nom'];
             }
         }
@@ -245,7 +245,7 @@ if (empty($op)) {
     $form = new XoopsThemeForm(_AM_PIECES_CREATION, 'cpieces', 'piece.php?op=creatpieces', 'post', true);
 
     $reqcat = $xoopsDB->query('SELECT id, nom FROM ' . $xoopsDB->prefix('garage_cat_piece') . ' ORDER BY nom');
-    while (($row = $xoopsDB->fetchArray($reqcat)) !== false) {
+    while (false !== ($row = $xoopsDB->fetchArray($reqcat))) {
         $categories[$row['id']] = $row['nom'];
     }
     $cat = new XoopsFormSelect(_AM_VEHICULE_CAT_PIECE, 'id_cat_piece', null, 5, false);
@@ -257,7 +257,7 @@ if (empty($op)) {
     $form->addElement(new XoopsFormText(_AM_PIECES_DESIGNATION, 'designation', 50, 255, ''));
 
     $req4 = $xoopsDB->query('SELECT id, nom  FROM ' . $xoopsDB->prefix('garage_fournisseur') . ' ORDER BY nom');
-    while (($row = $xoopsDB->fetchArray($req4)) !== false) {
+    while (false !== ($row = $xoopsDB->fetchArray($req4))) {
         $fournisseurs[$row['id']] = $row['nom'];
     }
     $four = new XoopsFormSelect(_AM_FSEUR, 'id_fournisseur', null, 5, false);

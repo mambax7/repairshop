@@ -97,7 +97,7 @@ switch ($op) {
         $res = $xoopsDB->query($sql) || exit('Erreur requete :' . $sql . '<br>');
 
         if ($res) {
-            while (($row = $xoopsDB->fetchArray($res)) !== false) {
+            while (false !== ($row = $xoopsDB->fetchArray($res))) {
                 $id        = $row['id'];
                 $compte    = $row['compte'];
                 $rs        = $row['rs'];
@@ -204,7 +204,7 @@ if (empty($op)) {
     echo "<table class=\"outer\" width=\"100%\">\n" . "<th><div class='center;'>" . _AM_CLIENT_NOM . ' / ' . _AM_CLIENT_PRENOM . "</div></th>\n" . "<th><div class='center;'>" . _AM_CLIENT_CP . ' - ' . _AM_CLIENT_VILLE . "</div></th>\n" . "<th colspan=\"2\"><div class='center;'>" . _AM_ACTION . "</div></th>\n";
     //      ."<th><div class='center;'>"._AM_ACTION."</div></th>\n";
 
-    while ((list($id, $nom, $prenom, $cp, $ville) = $xoopsDB->fetchRow($result)) !== false) {
+    while (false !== (list($id, $nom, $prenom, $cp, $ville) = $xoopsDB->fetchRow($result))) {
         echo '<tr>';
         echo '<td class="odd" ALIGN="left">' . $nom . ' - ' . $prenom . '</td>';
         echo '<td class="odd" ALIGN="left">' . $cp . ' - ' . $ville . '</td>';

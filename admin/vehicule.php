@@ -139,7 +139,7 @@ switch ($op) {
         $res = $xoopsDB->query($sql) || exit('Erreur requete :' . $sql . '<br>');
 
         if ($res) {
-            while (($row = $xoopsDB->fetchArray($res)) !== false) {
+            while (false !== ($row = $xoopsDB->fetchArray($res))) {
                 $id                = $row['id'];
                 $immat             = $row['immat'];
                 $id_proprietaire   = $row['id_proprietaire'];
@@ -171,7 +171,7 @@ switch ($op) {
         $form->addElement(new XoopsFormText(_AM_VEHICULE_IMMAT, 'immat', 20, 25, $immat));
 
         $req4 = $xoopsDB->query('SELECT id, nom, prenom, cp FROM ' . $xoopsDB->prefix('garage_clients') . ' ORDER BY nom');
-        while (($row = $xoopsDB->fetchArray($req4)) !== false) {
+        while (false !== ($row = $xoopsDB->fetchArray($req4))) {
             $clients[$row['id']] = $row['nom'] . ' - ' . $row['prenom'] . ' - ' . $row['cp'];
         }
         $cli = new XoopsFormSelect(_AM_VEHICULE_PROPRIETAIRE, 'id_proprietaire', null, 5, false);
@@ -192,7 +192,7 @@ switch ($op) {
 
         $req4       = $xoopsDB->query('SELECT id, nom FROM ' . $xoopsDB->prefix('garage_marque') . ' ORDER BY nom');
         $marques[0] = '---NA---';
-        while (($row = $xoopsDB->fetchArray($req4)) !== false) {
+        while (false !== ($row = $xoopsDB->fetchArray($req4))) {
             $marques[$row['id']] = $row['nom'];
         }
         $marq = new XoopsFormSelect(_AM_VEHICULE_MARQUE, 'id_marque', null, 1, false);
@@ -287,24 +287,24 @@ if (empty($op)) {
     echo "<table class=\"outer\" width=\"100%\">\n" . '<th><div class="center;">' . _AM_VEHICULE_IMMAT . ' / ' . _AM_VEHICULE_MARQUE . "</div></th>\n" . '<th><div class="center;">' . _AM_VEHICULE_PROPRIETAIRE . "</div></th>\n" . "<th colspan=\"2\"><div class='center;'>" . _AM_ACTION . "</div></th>\n";
     //      ."<th><div class='center;'>"._AM_ACTION."</div></th>\n";
 
-    while ((list($id, $immat, $id_proprietaire, $id_marque, $gamme, $modele_version) = $xoopsDB->fetchRow($result)) !== false) {
+    while (false !== (list($id, $immat, $id_proprietaire, $id_marque, $gamme, $modele_version) = $xoopsDB->fetchRow($result))) {
         $marque = '';
-        if ($id_marque != 0) {
+        if (0 != $id_marque) {
             // on recupere la marque du vehicule
             $req = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('garage_marque') . " WHERE id='$id_marque'");
             if ($req) {
-                while (($row = $xoopsDB->fetchArray($req)) !== false) {
+                while (false !== ($row = $xoopsDB->fetchArray($req))) {
                     $marque = $row['nom'];
                 }
             }
         }
 
         $proprietaire = '';
-        if ($id_proprietaire != 0) {
+        if (0 != $id_proprietaire) {
             // on recupere le nom du proprietaire du vehicule
             $req = $xoopsDB->query('SELECT id, civilite, nom, prenom FROM ' . $xoopsDB->prefix('garage_clients') . " WHERE id='$id_proprietaire'");
             if ($req) {
-                while (($row = $xoopsDB->fetchArray($req)) !== false) {
+                while (false !== ($row = $xoopsDB->fetchArray($req))) {
                     $proprietaire = $row['civilite'] . ' ' . $row['prenom'] . ' ' . $row['nom'];
                 }
             }
@@ -324,7 +324,7 @@ if (empty($op)) {
     $form->addElement(new XoopsFormText(_AM_VEHICULE_IMMAT, 'immat', 25, 50));
 
     $req4 = $xoopsDB->query('SELECT id, nom, prenom, cp FROM ' . $xoopsDB->prefix('garage_clients') . ' ORDER BY nom');
-    while (($row = $xoopsDB->fetchArray($req4)) !== false) {
+    while (false !== ($row = $xoopsDB->fetchArray($req4))) {
         $clients[$row['id']] = $row['nom'] . ' - ' . $row['prenom'] . ' - ' . $row['cp'];
     }
     $cli = new XoopsFormSelect(_AM_VEHICULE_PROPRIETAIRE, 'id_proprietaire', null, 5, false);
@@ -343,7 +343,7 @@ if (empty($op)) {
     $info = new XoopsFormElementTray(' ');
 
     $req4 = $xoopsDB->query('SELECT id, nom FROM ' . $xoopsDB->prefix('garage_marque') . ' ORDER BY nom');
-    while (($row = $xoopsDB->fetchArray($req4)) !== false) {
+    while (false !== ($row = $xoopsDB->fetchArray($req4))) {
         $marques[$row['id']] = $row['nom'];
     }
     $marq = new XoopsFormSelect(_AM_VEHICULE_MARQUE, 'id_marque', null, 1, false);

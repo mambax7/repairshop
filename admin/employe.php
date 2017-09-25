@@ -81,7 +81,7 @@ switch ($op) {
         $res = $xoopsDB->query($sql) || exit('erreur requete :' . $sql . '<br>');
 
         if ($res) {
-            while (($row = $xoopsDB->fetchArray($res)) !== false) {
+            while (false !== ($row = $xoopsDB->fetchArray($res))) {
                 $id_empl = $row['id_empl'];
                 $nom     = $row['nom_empl'];
                 $prenom  = $row['pre_empl'];
@@ -132,7 +132,7 @@ if (empty($op)) {
     echo "<table class='outer' width='100%'>\n" . "<th><div class='center;'>" . _AM_GARAGE_EMPL_NAME . "</div></th>\n" . "<th><div class='center;'>" . _AM_GARAGE_EMPL_PREN . "</div></th>\n" . "<th colspan=\"2\"><div class='center;'>" . _AM_ACTION . "</div></th>\n";
 
     $result = $xoopsDB->query('SELECT id_empl, nom_empl, pre_empl FROM ' . $xoopsDB->prefix('garage_employe') . ' ORDER BY nom_empl');
-    while ((list($id_empl, $nom_empl, $pre_empl) = $xoopsDB->fetchRow($result)) !== false) {
+    while (false !== (list($id_empl, $nom_empl, $pre_empl) = $xoopsDB->fetchRow($result))) {
         echo '<tr>';
         echo '<td class="odd" ALIGN="left">' . $nom_empl . '</td>';
         echo '<td class="odd" ALIGN="left">' . $pre_empl . '</td>';

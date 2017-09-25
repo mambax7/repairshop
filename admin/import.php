@@ -17,7 +17,7 @@ if (!isset($op)) {
     $op=" ";
 }
 
-if ($op == "import_user") {
+if ("import_user" == $op) {
     global $xoopsDB, $myts;
     Xoops_Cp_Header();
 
@@ -32,7 +32,7 @@ if ($op == "import_user") {
  
     $delete_table = (isset($_POST["delete_table"]) ? $_POST["delete_table"] : '0');
     
-    if ($delete_table == 1) {
+    if (1 == $delete_table) {
         $sql = "DELETE FROM ".$xoopsDB->prefix('employe');
         $xoopsDB->queryF($sql) or die("Suppression Error ".$sql);
     }
@@ -50,7 +50,7 @@ if ($op == "import_user") {
     $sql = "select name FROM ".$table_src;
     $result = $xoopsDB->query($sql);
 
-    while ((list($name) = $xoopsDB->fetchRow($result)) != false) {
+    while (false != (list($name) = $xoopsDB->fetchRow($result))) {
         //d&eacute;coupage du champ name de la table users
         $arr = split(" ", $name);
         $prenom = $arr[0];

@@ -44,15 +44,15 @@ echo '<style>
                     .solde {background-color: #CAFAFF; padding: 5px;}
                     .archive {background-color: #CAE2FF; padding: 5px;}
                     </style>';
-if ($etat == 0) {
+if (0 == $etat) {
     $etat_des = _MD_INTER_ENCOURS;
     $style    = 'encours';
 }
-if ($etat == 1) {
+if (1 == $etat) {
     $etat_des = _MD_INTER_SOLDEES;
     $style    = 'solde';
 }
-if ($etat == 2) {
+if (2 == $etat) {
     $etat_des = _MD_INTER_ARCHIVEES;
     $style    = 'archive';
 }
@@ -76,15 +76,15 @@ $result = $xoopsDB->query('SELECT id, id_voiture, date_debut, date_fin, delai, s
 
 echo "<table class=\"outer\" width=\"100%\">\n" . '<th><div class="center;">' . _MD_INTER_DELAI . "</div></th>\n" . '<th><div class="center;">' . _MD_VEHICULE . "</div></th>\n" . '<th><div class="center;">' . _MD_VEHICULE_PROPRIETAIRE . "</div></th>\n" . "<th colspan=\"2\"><div class='center;'>" . _MD_ACTION . "</div></th>\n";
 
-while ((list($id_inter, $id_voiture, $date_debut, $date_fin, $delai, $solde) = $xoopsDB->fetchRow($result)) !== false) {
+while (false !== (list($id_inter, $id_voiture, $date_debut, $date_fin, $delai, $solde) = $xoopsDB->fetchRow($result))) {
 
     // recup des infos du vehicule et proprio
     $req3 = $xoopsDB->query('SELECT id, immat, id_marque, gamme, modele_version, id_proprietaire FROM ' . $xoopsDB->prefix('garage_vehicule') . " WHERE id=$id_voiture");
-    while ((list($id_vehicule, $immat, $id_marque, $gamme, $modele_version, $id_proprietaire) = $xoopsDB->fetchRow($req3)) !== false) {
+    while (false !== (list($id_vehicule, $immat, $id_marque, $gamme, $modele_version, $id_proprietaire) = $xoopsDB->fetchRow($req3))) {
         $civilite = '';
         $nom      = '';
         $prenom   = '';
-        if ($id_proprietaire != 0) {
+        if (0 != $id_proprietaire) {
             $sql = sprintf('SELECT * FROM ' . $xoopsDB->prefix('garage_clients') . " WHERE id='%s'", $id_proprietaire);
             $res = $xoopsDB->query($sql) || exit('erreur requete :' . $sql . '<br>');
 
@@ -108,11 +108,11 @@ while ((list($id_inter, $id_voiture, $date_debut, $date_fin, $delai, $solde) = $
         }
 
         $mark = '';
-        if ($id_marque != 0) {
+        if (0 != $id_marque) {
             $sql2 = sprintf('SELECT * FROM ' . $xoopsDB->prefix('garage_marque') . " WHERE id='%s'", $id_marque);
             $res  = $xoopsDB->query($sql2) || exit('erreur requete :' . $sql . '<br>');
 
-            while ((list($id_marque, $marque) = $xoopsDB->fetchRow($res)) !== false) {
+            while (false !== (list($id_marque, $marque) = $xoopsDB->fetchRow($res))) {
                 $mark = $marque;
             }
         }
@@ -134,8 +134,8 @@ while ((list($id_inter, $id_voiture, $date_debut, $date_fin, $delai, $solde) = $
 
         $facture = '';
 
-        if ($xoopsModuleConfig['fonction_facture'] == 1) {
-            if ($xoopsModuleConfig['impression_facture_non_admin'] == 1 || $xoopsUser->isAdmin($xoopsModule->mid())) {
+        if (1 == $xoopsModuleConfig['fonction_facture']) {
+            if (1 == $xoopsModuleConfig['impression_facture_non_admin'] || $xoopsUser->isAdmin($xoopsModule->mid())) {
                 $facture = '<img src="images/invoice.png" alt="' . _MD_PRINT_FACTURE . '" title="' . _MD_PRINT_FACTURE . '"></a>';
             }
         }
@@ -163,7 +163,7 @@ while ((list($id_inter, $id_voiture, $date_debut, $date_fin, $delai, $solde) = $
 }
 echo '</tr></table><br>';
 
-if ($etat == 0) {
+if (0 == $etat) {
     include __DIR__ . '/intervention.php';
 }
 

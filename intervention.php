@@ -92,19 +92,19 @@ switch ($op) {
         // par defaut non soldée (1 pour une intervention soldee)
         $solde = '0';
 
-        if ($id_voiture == 0 && $new_vehicule != '') {
+        if (0 == $id_voiture && '' != $new_vehicule) {
             //on cree le vehicule dans la table des vehicules
             $sqlnv = 'INSERT INTO ' . $xoopsDB->prefix('garage_vehicule') . " (immat, id_proprietaire, id_marque, gamme, modele_version) VALUE ('" . $new_vehicule . "', '" . $id_proprietaire . "','" . $id_marque . "', '" . $gamme . "', '" . $modele_version . "')";
             $xoopsDB->queryF($sqlnv) || die('Erreur requete : ' . $sqlnv . '<br>');
 
             // recup de la valeur de l'autoincrement pour appeler la page de creation des pieces detachees
             $result1 = $xoopsDB->query('SELECT MAX(id) AS id_max  FROM ' . $xoopsDB->prefix('garage_vehicule'));
-            while ((list($id_max) = $xoopsDB->fetchRow($result1)) !== false) {
+            while (false !== (list($id_max) = $xoopsDB->fetchRow($result1))) {
                 $id_voiture = $id_max;
             }
         }
 
-        if ($new_proprietaire !== '') {
+        if ('' !== $new_proprietaire) {
             //if ($id_proprietaire == 0 && $new_proprietaire != ""){
             //on cree le client dans la table des clients
             $sqlnv = 'INSERT INTO ' . $xoopsDB->prefix('garage_clients') . " (nom, rs) VALUE ('" . $new_proprietaire . "','" . $new_proprietaire_rs . "' )";
@@ -112,7 +112,7 @@ switch ($op) {
 
             // recup de la valeur de l'autoincrement
             $resultc = $xoopsDB->query('SELECT MAX(id) AS id_max  FROM ' . $xoopsDB->prefix('garage_clients'));
-            while ((list($id_max) = $xoopsDB->fetchRow($resultc)) !== false) {
+            while (false !== (list($id_max) = $xoopsDB->fetchRow($resultc))) {
                 $id_proprio = $id_max;
             }
 
@@ -129,7 +129,7 @@ switch ($op) {
 
         // recup de la valeur de l'autoincrement pour appeler la page de creation des pieces detachees
         $result = $xoopsDB->query('SELECT MAX(id) AS id_max  FROM ' . $xoopsDB->prefix('garage_intervention'));
-        while ((list($id_max) = $xoopsDB->fetchRow($result)) !== false) {
+        while (false !== (list($id_max) = $xoopsDB->fetchRow($result))) {
             $idmax = $id_max;
         }
 
@@ -150,7 +150,7 @@ if (empty($op)) {
     $req1                = $xoopsDB->query('SELECT id, immat, id_marque, gamme, modele_version, id_proprietaire FROM ' . $xoopsDB->prefix('garage_vehicule') . ' ORDER BY immat ASC');
     $list_id_vehicule    = [];
     $list_id_vehicule[0] = '---- NA ----';
-    while ((list($id_vehic, $immat, $id_marque, $gamme, $modele_version, $id_proprietaire) = $xoopsDB->fetchRow($req1)) !== false) {
+    while (false !== (list($id_vehic, $immat, $id_marque, $gamme, $modele_version, $id_proprietaire) = $xoopsDB->fetchRow($req1))) {
         $sql = sprintf('SELECT * FROM ' . $xoopsDB->prefix('garage_clients') . " WHERE id='%s'", $id_proprietaire);
         $res = $xoopsDB->query($sql) || die('erreur requete :' . $sql . '<br>');
 
@@ -175,7 +175,7 @@ if (empty($op)) {
         $sql2 = sprintf('SELECT * FROM ' . $xoopsDB->prefix('garage_marque') . " WHERE id='%s'", $id_marque);
         $res  = $xoopsDB->query($sql2) || die('erreur requete :' . $sql . '<br>');
 
-        while ((list($id_marque, $marque) = $xoopsDB->fetchRow($res)) !== false) {
+        while (false !== (list($id_marque, $marque) = $xoopsDB->fetchRow($res))) {
             $mark = $marque;
         }
         $list_id_vehicule[$id_vehic] = $immat . ' - ' . $mark . ' - ' . $gamme . ' - ' . $modele_version . ' - ' . $civilite . ' ' . $nom . ' ' . $prenom;
@@ -195,7 +195,7 @@ if (empty($op)) {
     $info->addElement(new XoopsFormText(_MD_VEHICULE_IMMAT, 'new_vehicule', 25, 255));
 
     $req4 = $xoopsDB->query('SELECT id, nom FROM ' . $xoopsDB->prefix('garage_marque') . ' ORDER BY nom');
-    while (($row = $xoopsDB->fetchArray($req4)) !== false) {
+    while (false !== ($row = $xoopsDB->fetchArray($req4))) {
         $marques[$row['id']] = $row['nom'];
     }
     $marq = new XoopsFormSelect(_MD_VEHICULE_MARQUE, 'id_marque', null, 1, false);
@@ -209,7 +209,7 @@ if (empty($op)) {
     $nref1 = new XoopsFormElementTray(_MD_CLIENT);
 
     $req4 = $xoopsDB->query('SELECT id, nom, prenom, cp FROM ' . $xoopsDB->prefix('garage_clients') . ' ORDER BY nom');
-    while (($row = $xoopsDB->fetchArray($req4)) !== false) {
+    while (false !== ($row = $xoopsDB->fetchArray($req4))) {
         $clients[$row['id']] = $row['nom'] . ' - ' . $row['prenom'] . ' - ' . $row['cp'];
     }
     $cli = new XoopsFormSelect('', 'id_proprietaire', null, 1, false);

@@ -82,7 +82,7 @@ switch ($op) {
         $res = $xoopsDB->query($sql) || exit('erreur requete :' . $sql . '<br>');
 
         if ($res) {
-            while (($row = $xoopsDB->fetchArray($res)) !== false) {
+            while (false !== ($row = $xoopsDB->fetchArray($res))) {
                 $id      = $row['id'];
                 $nom     = $row['nom'];
                 $adresse = $row['adresse'];
@@ -158,7 +158,7 @@ if (empty($op)) {
          . _AM_ACTION
          . "</div></th>\n";
 
-    while ((list($id, $nom, $adresse, $tel, $fax, $email) = $xoopsDB->fetchRow($result)) !== false) {
+    while (false !== (list($id, $nom, $adresse, $tel, $fax, $email) = $xoopsDB->fetchRow($result))) {
         $fournisseur[$id] = $id;
 
         echo '<tr>';

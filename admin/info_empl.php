@@ -61,7 +61,7 @@ echo "<table class=\"outer\" width=\"100%\">\n"
 $result     = $xoopsDB->query('SELECT id_serv, nom_serv, pere, chef, secretaire, adjoint FROM ' . $xoopsDB->prefix('service') . " WHERE id_serv='" . $id_service . "'");
 $service    = [];
 $service[0] = '---- NA ----';
-while ((list($id_serv, $nom_serv, $pere, $chef, $secretaire, $adjoint) = $xoopsDB->fetchRow($result)) !== false) {
+while (false !== (list($id_serv, $nom_serv, $pere, $chef, $secretaire, $adjoint) = $xoopsDB->fetchRow($result))) {
     $id_chef           = $chef;
     $id_adj            = $adjoint;
     $id_sec            = $secretaire;
@@ -70,15 +70,15 @@ while ((list($id_serv, $nom_serv, $pere, $chef, $secretaire, $adjoint) = $xoopsD
     echo '<td class="odd" ALIGN="left">' . $id_serv . '</td>';
     echo '<td class="odd" ALIGN="left">' . $nom_serv . '</td>';
     echo '<td class="odd" ALIGN="left">' . $pere . '</td>';
-    if ($chef == '0') {
+    if ('0' == $chef) {
         $chef = '-- NA --';
     }
     echo '<td class="odd" ALIGN="left">' . $chef . '</td>';
-    if ($secretaire == '0') {
+    if ('0' == $secretaire) {
         $secretaire = '-- NA --';
     }
     echo '<td class="odd" ALIGN="left">' . $secretaire . '</td>';
-    if ($adjoint == '0') {
+    if ('0' == $adjoint) {
         $adjoint = '-- NA --';
     }
     echo '<td class="odd" ALIGN="left">' . $adjoint . '</td>';
@@ -91,10 +91,10 @@ $test_chef = $id_chef;
 $test_sec  = $id_sec;
 $test_adj  = $id_adj;
 $result2   = $xoopsDB->query('SELECT id_empl, id_serv FROM ' . $xoopsDB->prefix('affecte') . " WHERE id_serv='" . $id_service . "'");
-while ((list($id_empl, $id_serv) = $xoopsDB->fetchRow($result2)) !== false || $id_chef != '0' || $id_sec != '0'
-       || $id_adj != '0') {
+while (false !== (list($id_empl, $id_serv) = $xoopsDB->fetchRow($result2)) || '0' != $id_chef || '0' != $id_sec
+       || '0' != $id_adj) {
     ++$i;
-    if ($i == 1) {
+    if (1 == $i) {
         echo '<tr><th><div class="center;">'
              . _AM_ORGA_EMPL_CID
              . "</div></th>\n"
@@ -120,23 +120,23 @@ while ((list($id_empl, $id_serv) = $xoopsDB->fetchRow($result2)) !== false || $i
 
     $test = 0;
 
-    if ($id_chef != '0') {
-        if ($id_sec == '0' && $id_adj == '0') {
+    if ('0' != $id_chef) {
+        if ('0' == $id_sec && '0' == $id_adj) {
             $test = 1;
         }
         info_empl($id_chef, $id_serv, 'chef', $test);
         $id_chef = '0';
     }
 
-    if ($id_sec != '0') {
-        if ($id_adj == '0') {
+    if ('0' != $id_sec) {
+        if ('0' == $id_adj) {
             $test = 1;
         }
         info_empl($id_sec, $id_serv, 'sec', $test);
         $id_sec = '0';
     }
 
-    if ($id_adj != '0') {
+    if ('0' != $id_adj) {
         info_empl($id_adj, $id_serv, 'adj', 1);
         $id_adj = '0';
     }

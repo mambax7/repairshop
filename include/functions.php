@@ -159,8 +159,8 @@ function doc_info($lieu)
 {
     global $xoopsDB;
     $req = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('garage_doc') . " WHERE id_doc='" . $lieu . "'");
-    while ((list($id_doc, $doc_fr) = $xoopsDB->fetchRow($req)) !== false) {
-        if ($doc_fr <> '') {
+    while (false !== (list($id_doc, $doc_fr) = $xoopsDB->fetchRow($req))) {
+        if ('' <> $doc_fr) {
             echo '<fieldset><legend>&nbsp;<img src="../assets/images/tipanim.gif">&nbsp;<b>' . _AM_DOC . '</b>&nbsp;</legend><br>' . nl2br($doc_fr) . '</fieldset><br>';
         }
     }

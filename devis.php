@@ -29,7 +29,7 @@ if (!isset($_POST['id_inter'])) {
 }
 $id_inter = (int)$id_inter;
 
-if ($id_inter == 0) {
+if (0 == $id_inter) {
     redirect_header('index.php', 2, _NOPERM);
 }
 
@@ -60,13 +60,13 @@ $requete = $xoopsDB->query('SELECT i.*, v.id, v.immat, v.id_marque, v.gamme, v.m
                            . ' m ON m.id = v.id_marque WHERE i.id='
                            . $id_inter);
 
-while ((list($id2, $id_vehic, $kilometrage, $date_debut, $date_fin, $delai, $id_inter_recurrente, $description, $observation, $date_devis, $date_acceptation, $montant, $acompte_verse, $solde, $hmeca_t1, $hmeca_t2, $hmeca_t3, $hcarro_t1, $hcarro_t2, $hcarro_t3, $tmeca_t1, $tmeca_t2, $tmeca_t3, $tcarro_t1, $tcarro_t2, $tcarro_t3, $remise_meca, $remise_caro, $remise_forfait, $numero_devis, $numero_facture, $id_vehicule, $immat, $id_marque, $gamme, $modele_version, $id_proprietaire, $civilite, $nom, $prenom, $teldom, $telport, $marque, $compte, $client_rs, $adresse, $cp, $ville, $remise) = $xoopsDB->fetchRow($requete))
-       !== false) {
+while (false
+       !== (list($id2, $id_vehic, $kilometrage, $date_debut, $date_fin, $delai, $id_inter_recurrente, $description, $observation, $date_devis, $date_acceptation, $montant, $acompte_verse, $solde, $hmeca_t1, $hmeca_t2, $hmeca_t3, $hcarro_t1, $hcarro_t2, $hcarro_t3, $tmeca_t1, $tmeca_t2, $tmeca_t3, $tcarro_t1, $tcarro_t2, $tcarro_t3, $remise_meca, $remise_caro, $remise_forfait, $numero_devis, $numero_facture, $id_vehicule, $immat, $id_marque, $gamme, $modele_version, $id_proprietaire, $civilite, $nom, $prenom, $teldom, $telport, $marque, $compte, $client_rs, $adresse, $cp, $ville, $remise) = $xoopsDB->fetchRow($requete))) {
 
     // recup et update du numero de devis
-    if ($numero_devis == 0) {
+    if (0 == $numero_devis) {
         $reqnum = $xoopsDB->query('SELECT num_doc FROM ' . $xoopsDB->prefix('garage_num_doc') . " WHERE type_doc='DEVIS'");
-        while ((list($n_doc) = $xoopsDB->fetchRow($reqnum)) !== false) {
+        while (false !== (list($n_doc) = $xoopsDB->fetchRow($reqnum))) {
             ++$n_doc;
             // mise a jour dans la table des numeros de documents
             $sql = 'UPDATE ' . $xoopsDB->prefix('garage_num_doc') . " SET num_doc=$n_doc  WHERE type_doc='DEVIS'";
@@ -103,7 +103,7 @@ while ((list($id2, $id_vehic, $kilometrage, $date_debut, $date_fin, $delai, $id_
     $xoopsTpl->assign('devis_rs', $xoopsModuleConfig['raison_sociale']);
     $xoopsTpl->assign('devis_societe', nl2br($xoopsModuleConfig['societe']));
     $xoopsTpl->assign('devis_rcs', $xoopsModuleConfig['rcs']);
-    if ($xoopsModuleConfig['impression_directe'] == 1) {
+    if (1 == $xoopsModuleConfig['impression_directe']) {
         $xoopsTpl->assign('devis_impression_directe', ' onload="window.print()"');
     } else {
         $xoopsTpl->assign('devis_impression_directe', '');
@@ -131,7 +131,7 @@ while ((list($id2, $id_vehic, $kilometrage, $date_debut, $date_fin, $delai, $id_
     $i                 = 0;
     $devis_observation = '';
     $reqe              = $xoopsDB->query('SELECT t.*, e.*  FROM ' . $xoopsDB->prefix('garage_inter_temp') . ' t INNER JOIN ' . $xoopsDB->prefix('garage_employe') . ' e ON t.id_empl = e.id_empl WHERE t.id_inter=' . $id_inter);
-    while ((list($idkeyempl, $idinter, $id_empl, $observation, $hmeca_t1, $hmeca_t2, $hmeca_t3, $hcarro_t1, $hcarro_t2, $hcarro_t3, $remise_mod, $idkeyempl2, $nom_empl, $pre_empl) = $xoopsDB->fetchRow($reqe)) !== false) {
+    while (false !== (list($idkeyempl, $idinter, $id_empl, $observation, $hmeca_t1, $hmeca_t2, $hmeca_t3, $hcarro_t1, $hcarro_t2, $hcarro_t3, $remise_mod, $idkeyempl2, $nom_empl, $pre_empl) = $xoopsDB->fetchRow($reqe))) {
         ++$i;
         $devis_detail_mod[$i]['devis_nom_empl'] = $pre_empl . ' ' . $nom_empl;
         $devis_observation                      = $devis_observation . nl2br($observation) . '<br>';
@@ -189,12 +189,12 @@ while ((list($id2, $id_vehic, $kilometrage, $date_debut, $date_fin, $delai, $id_
     $montant_pieces      = 0;
     //liste des pieces
     $reqp = $xoopsDB->query('SELECT id, id_piece, designation, id_fournisseur, quantite, tarif_client, remise_pieces FROM ' . $xoopsDB->prefix('garage_inter_pieces') . ' WHERE id_inter=' . $id_inter);
-    while ((list($idkey, $id_piece, $designation, $id_fournisseur, $quantite, $tarif_client, $remise_pieces) = $xoopsDB->fetchRow($reqp)) !== false) {
+    while (false !== (list($idkey, $id_piece, $designation, $id_fournisseur, $quantite, $tarif_client, $remise_pieces) = $xoopsDB->fetchRow($reqp))) {
         ++$i;
         //piece magasin
         if (null !== $id_piece) {
             $reqpce = $xoopsDB->query('SELECT p.designation, p.tarif_client, f.nom FROM ' . $xoopsDB->prefix('garage_pieces') . ' p INNER JOIN  ' . $xoopsDB->prefix('garage_fournisseur') . ' f ON p.id_fournisseur=f.id WHERE p.id=' . $id_piece);
-            while ((list($designation, $tarif_client_std, $nom_fournisseur) = $xoopsDB->fetchrow($reqpce)) !== false) {
+            while (false !== (list($designation, $tarif_client_std, $nom_fournisseur) = $xoopsDB->fetchrow($reqpce))) {
                 if (null === $tarif_client) {
                     $tarif_client = $tarif_client_std;
                 }
@@ -209,7 +209,7 @@ while ((list($id2, $id_vehic, $kilometrage, $date_debut, $date_fin, $delai, $id_
         //piece libre
         if (null === $id_piece) {
             $reqf2 = $xoopsDB->query('SELECT id, nom  FROM ' . $xoopsDB->prefix('garage_fournisseur') . ' WHERE id=' . $id_fournisseur);
-            while (($row = $xoopsDB->fetchArray($reqf2)) !== false) {
+            while (false !== ($row = $xoopsDB->fetchArray($reqf2))) {
                 $nom_fournisseur = $row['nom'];
             }
             $devis_detail_pieces[$i]['devis_dp_designation']  = $designation;
@@ -233,7 +233,7 @@ while ((list($id2, $id_vehic, $kilometrage, $date_debut, $date_fin, $delai, $id_
     $devis_detail_forfaits = [];
     $montant_forfaits      = 0;
     $reqf                  = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('garage_inter_forfait') . ' WHERE id_inter=' . $id_inter);
-    while ((list($idkey, $id_interv, $id_forfait, $designation_ff, $ref_fournisseur, $quantite_ff, $tarif_client, $remise_forfait) = $xoopsDB->fetchRow($reqf)) !== false) {
+    while (false !== (list($idkey, $id_interv, $id_forfait, $designation_ff, $ref_fournisseur, $quantite_ff, $tarif_client, $remise_forfait) = $xoopsDB->fetchRow($reqf))) {
         ++$i;
         $nbf                                                    = 1; // compteur pour affichage
         $devis_detail_forfaits[$i]['devis_forfait_designation'] = nl2br($designation_ff);

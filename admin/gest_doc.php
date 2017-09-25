@@ -85,7 +85,7 @@ switch ($op) {
         $res = $xoopsDB->query($sql) || exit('erreur requete :' . $sql . '<br>');
 
         if ($res) {
-            while (($row = $xoopsDB->fetchArray($res)) !== false) {
+            while (false !== ($row = $xoopsDB->fetchArray($res))) {
                 //          $id_doc             = $myts->makeTboxData4Show($row['id_doc']);
                 //          $doc_fr             = $myts->makeTboxData4Show($row['doc_fr']);
                 $id_doc = $row['id_doc'];
@@ -141,7 +141,7 @@ if (empty($op)) {
 
     echo "<table class='outer' width='100%'>\n" . "<th width='20px'><div class='center;'>" . _AM_DOC . "</div></th>\n" . "<th><div class='center;'>" . _AM_DOC_DES . "</div></th>\n" . "<th colspan='2'><div class='center;'>" . _AM_ACTION . "</div></th>\n";
 
-    while ((list($id_doc, $doc_fr) = $xoopsDB->fetchRow($result)) !== false) {
+    while (false !== (list($id_doc, $doc_fr) = $xoopsDB->fetchRow($result))) {
         echo '<tr>';
         echo '<td class="odd" ALIGN="left">' . $id_doc . '</td>';
         echo '<td class="odd" ALIGN="left">' . nl2br($doc_fr) . '</td>';

@@ -42,7 +42,7 @@ if (!isset($_POST['id_inter'])) {
 }
 $id_inter = (int)$id_inter;
 
-if ($id_inter == 0) {
+if (0 == $id_inter) {
     redirect_header('index.php', 2, _NOPERM);
 }
 
@@ -99,7 +99,7 @@ switch ($op) {
 
         $solde   = $_POST['solde'];
         $archive = $_POST['archive'];
-        if ($archive == 1) {
+        if (1 == $archive) {
             $solde = 2;
         }
 
@@ -107,22 +107,22 @@ switch ($op) {
         $remise_caro    = $_POST['remise_caro'];
         $remise_forfait = $_POST['remise_forfait'];
 
-        if ($hmeca_t1 == '') {
+        if ('' == $hmeca_t1) {
             $hmeca_t1 = 0;
         }
-        if ($hmeca_t2 == '') {
+        if ('' == $hmeca_t2) {
             $hmeca_t2 = 0;
         }
-        if ($hmeca_t3 == '') {
+        if ('' == $hmeca_t3) {
             $hmeca_t3 = 0;
         }
-        if ($hcarro_t1 == '') {
+        if ('' == $hcarro_t1) {
             $hcarro_t1 = 0;
         }
-        if ($hcarro_t2 == '') {
+        if ('' == $hcarro_t2) {
             $hcarro_t2 = 0;
         }
-        if ($hcarro_t3 == '') {
+        if ('' == $hcarro_t3) {
             $hcarro_t3 = 0;
         }
 
@@ -165,15 +165,15 @@ switch ($op) {
         $xoopsDB->queryF($sql) || exit('Erreur requete : ' . $sql . '<br>');
 
         // creation dans la table des heures
-        if (($hmeca_t1 + $hmeca_t2 + $hmeca_t3 + $hcarro_t1 + $hcarro_t2 + $hcarro_t3) != 0) {
+        if (0 != ($hmeca_t1 + $hmeca_t2 + $hmeca_t3 + $hcarro_t1 + $hcarro_t2 + $hcarro_t3)) {
             $sqlh = 'INSERT INTO ' . $xoopsDB->prefix('garage_inter_temp') . " (id_inter, id_empl, observation, hmeca_t1, hmeca_t2, hmeca_t3, hcarro_t1, hcarro_t2, hcarro_t3) VALUES ($id_inter, $id_empl, '$tx_real', $hmeca_t1, $hmeca_t2, $hmeca_t3, $hcarro_t1, $hcarro_t2, $hcarro_t3)";
             $xoopsDB->queryF($sqlh) || exit('Erreur requete : ' . $sqlh . '<br>');
         }
         // insertion des pieces selectionnees (pieces magasin)
-        if ($id_piece != 0) {
-            if ($tarif_client == 0) {
+        if (0 != $id_piece) {
+            if (0 == $tarif_client) {
                 $reqpx = $xoopsDB->query('SELECT tarif_client FROM ' . $xoopsDB->prefix('garage_pieces') . ' WHERE id=' . $id_piece);
-                while ((list($tarif) = $xoopsDB->fetchRow($reqpx)) !== false) {
+                while (false !== (list($tarif) = $xoopsDB->fetchRow($reqpx))) {
                     $tarif_client = $tarif;
                 }
             }
@@ -182,7 +182,7 @@ switch ($op) {
             $xoopsDB->queryF($sql2) || exit('Erreur requete : ' . $sql2 . '<br>');
         }
         // insertion des pieces selectionnees (pieces hors magasin)
-        if ($designation != '') {
+        if ('' != $designation) {
             $sql3 = sprintf("INSERT INTO %s (id_inter , designation, quantite, tarif_client, id_fournisseur) VALUES ('%s', '%s', '%s', '%s', '%s')", $xoopsDB->prefix('garage_inter_pieces'), $id_inter, $designation, $quantite1, $tarif_client1, $id_fournisseur);
             $xoopsDB->queryF($sql3) || exit('Erreur requete : ' . $sql3 . '<br>');
         }
@@ -198,9 +198,9 @@ switch ($op) {
         }
 
         // insertion des forfaits selectionnees
-        if ($id_forfait != 0) {
+        if (0 != $id_forfait) {
             $reqff = $xoopsDB->query('SELECT description, tarif FROM ' . $xoopsDB->prefix('garage_forfait') . ' WHERE id=' . $id_forfait);
-            while ((list($description_forfait, $tarif_forfait) = $xoopsDB->fetchRow($reqff)) !== false) {
+            while (false !== (list($description_forfait, $tarif_forfait) = $xoopsDB->fetchRow($reqff))) {
                 $designation = $description_forfait;
                 $tarif       = $tarif_forfait;
             }
@@ -273,8 +273,8 @@ if (empty($op)) {
                                . ' m ON m.id = v.id_marque WHERE i.id='
                                . $id_inter);
 
-    while ((list($id2, $id_vehic, $kilometrage, $date_debut, $date_fin, $delai, $id_inter_recurrente, $description, $observation, $date_devis, $date_acceptation, $montant, $acompte_verse, $solde, $hmeca_t1, $hmeca_t2, $hmeca_t3, $hcarro_t1, $hcarro_t2, $hcarro_t3, $tmeca_t1, $tmeca_t2, $tmeca_t3, $tcarro_t1, $tcarro_t2, $tcarro_t3, $remise_meca, $remise_caro, $remise_forfait, $numero_devis, $numero_facture, $id_vehicule, $immat, $id_marque, $gamme, $modele_version, $id_proprietaire, $civilite, $nom, $prenom, $teldom, $telport, $marque) = $xoopsDB->fetchRow($requete))
-           !== false) {
+    while (false
+           !== (list($id2, $id_vehic, $kilometrage, $date_debut, $date_fin, $delai, $id_inter_recurrente, $description, $observation, $date_devis, $date_acceptation, $montant, $acompte_verse, $solde, $hmeca_t1, $hmeca_t2, $hmeca_t3, $hcarro_t1, $hcarro_t2, $hcarro_t3, $tmeca_t1, $tmeca_t2, $tmeca_t3, $tcarro_t1, $tcarro_t2, $tcarro_t3, $remise_meca, $remise_caro, $remise_forfait, $numero_devis, $numero_facture, $id_vehicule, $immat, $id_marque, $gamme, $modele_version, $id_proprietaire, $civilite, $nom, $prenom, $teldom, $telport, $marque) = $xoopsDB->fetchRow($requete))) {
         echo "<a href='index.php'><img src='../assets/images/fleche.gif' alt='" . _AM_BACKTOLISTE . "' title='" . _AM_BACKTOLISTE . "'><br>" . _AM_BACKTOLISTE . '</a>';
 
         $form = new XoopsThemeForm(_AM_CREATE . ' ' . _AM_INTER_VEHICULE, 'cinter', 'inter_pces.php?op=create&id_inter=' . $id_inter, 'post', true);
@@ -337,7 +337,7 @@ if (empty($op)) {
 
         $nbmo = 0;
         $reqe = $xoopsDB->query('SELECT t.*, e.*  FROM ' . $xoopsDB->prefix('garage_inter_temp') . ' t INNER JOIN ' . $xoopsDB->prefix('garage_employe') . ' e ON t.id_empl = e.id_empl WHERE t.id_inter=' . $id_inter);
-        while ((list($idkeyempl, $idinter, $id_empl, $observation, $hmeca_t1, $hmeca_t2, $hmeca_t3, $hcarro_t1, $hcarro_t2, $hcarro_t3, $tmeca_t1, $tmeca_t2, $tmeca_t3, $tcarro_t1, $tcarro_t2, $tcarro_t3, $idkeyempl2, $nom_empl, $pre_empl) = $xoopsDB->fetchRow($reqe)) !== false) {
+        while (false !== (list($idkeyempl, $idinter, $id_empl, $observation, $hmeca_t1, $hmeca_t2, $hmeca_t3, $hcarro_t1, $hcarro_t2, $hcarro_t3, $tmeca_t1, $tmeca_t2, $tmeca_t3, $tcarro_t1, $tcarro_t2, $tcarro_t3, $idkeyempl2, $nom_empl, $pre_empl) = $xoopsDB->fetchRow($reqe))) {
             $nbmo    = 1; // test pour affichage
             $mod_dec .= '<tr><td align=left>' . $pre_empl . ' ' . $nom_empl . '</td>';
             $mod_dec .= "<td align=center><input type='text' name='hmeca_t1_$idconstat' size='5' maxlength='10' value='" . $hmeca_t1 . "'></td>";
@@ -348,7 +348,7 @@ if (empty($op)) {
             $mod_dec .= "<td align=center><input type='text' name='hcarro_t3_$idconstat' size='5' maxlength='10' value='" . $hcarro_t3 . "'></td>";
             $mod_dec .= "<td align=center><a href='inter_pces.php?op=delete_mod&id=" . $idkeyempl . '&id_inter=' . $id_inter . "'><img src='../assets/images/cancel.png' alt='Supprimer' title='Supprimer'></a></td></tr>";
 
-            if ($observation != '') {
+            if ('' != $observation) {
                 $mod_dec .= '<tr><td align=right>' . _AM_INTER_TRAVAUX_REAL . '&nbsp;</td>';
                 $mod_dec .= '<td colspan=6>';
                 $mod_dec .= "<TEXTAREA style='border: 1px solid #0078F0' rows='2' cols='80' name='constat_$idconstat'>" . $observation . '</TEXTAREA>';
@@ -398,11 +398,11 @@ if (empty($op)) {
         $mod_dec          .= '<td></td></tr>';
         $mod_dec          .= '</table>';
 
-        if ($nbmo != 0) {
+        if (0 != $nbmo) {
             $form->insertBreak('<h3><div class="center;">' . _AM_INTER_MOD . '</div></h3><br>' . $mod_dec, 'head');
         }
         $reqemp = $xoopsDB->query('SELECT id_empl, nom_empl, pre_empl  FROM ' . $xoopsDB->prefix('garage_employe') . ' ORDER BY nom_empl');
-        while (($row = $xoopsDB->fetchArray($reqemp)) !== false) {
+        while (false !== ($row = $xoopsDB->fetchArray($reqemp))) {
             $employes[$row['id_empl']] = $row['pre_empl'] . ' ' . $row['nom_empl'];
         }
 
@@ -436,12 +436,12 @@ if (empty($op)) {
         //liste des pieces deja renseignées
         $nbp  = 0;
         $reqp = $xoopsDB->query('SELECT id, id_piece, designation, id_fournisseur, quantite, tarif_client, remise_pieces FROM ' . $xoopsDB->prefix('garage_inter_pieces') . ' WHERE id_inter=' . $id_inter);
-        while ((list($idkey, $id_piece, $designation, $id_fournisseur, $quantite, $tarif_client, $remise_pieces) = $xoopsDB->fetchRow($reqp)) !== false) {
+        while (false !== (list($idkey, $id_piece, $designation, $id_fournisseur, $quantite, $tarif_client, $remise_pieces) = $xoopsDB->fetchRow($reqp))) {
             ++$nbp;
             //piece magasin
             if (null !== $id_piece) {
                 $reqpce = $xoopsDB->query('SELECT p.designation, p.tarif_client, f.nom FROM ' . $xoopsDB->prefix('garage_pieces') . ' p INNER JOIN ' . $xoopsDB->prefix('garage_fournisseur') . ' f ON p.id_fournisseur=f.id WHERE p.id=' . $id_piece);
-                while ((list($designation, $tarif_client_std, $nom_fournisseur) = $xoopsDB->fetchrow($reqpce)) !== false) {
+                while (false !== (list($designation, $tarif_client_std, $nom_fournisseur) = $xoopsDB->fetchrow($reqpce))) {
                     if (null === $tarif_client) {
                         $tarif_client = $tarif_client_std;
                     }
@@ -458,7 +458,7 @@ if (empty($op)) {
             //piece libre
             if (null === $id_piece) {
                 $reqf2 = $xoopsDB->query('SELECT id, nom  FROM ' . $xoopsDB->prefix('garage_fournisseur') . ' WHERE id=' . $id_fournisseur);
-                while (($row = $xoopsDB->fetchArray($reqf2)) !== false) {
+                while (false !== ($row = $xoopsDB->fetchArray($reqf2))) {
                     $nom_fournisseur = $row['nom'];
                 }
                 $pieces_det .= '<tr><td align=left>' . $designation . '</td>';
@@ -481,20 +481,20 @@ if (empty($op)) {
         $pieces_det .= '</tr>';
         $pieces_det .= '</table>';
 
-        if ($nbp != 0) {
+        if (0 != $nbp) {
             $form->insertBreak(_AM_INTER_PIECES_UTILISEES . '<div class="center;"><br>' . $pieces_det . '</div>', 'head');
         }
         // ajout de pieces
         $req1              = $xoopsDB->query('SELECT p.id, p.ref, p.designation, f.nom FROM ' . $xoopsDB->prefix('garage_pieces') . ' p INNER JOIN ' . $xoopsDB->prefix('garage_fournisseur') . ' f ON f.id = p.id_fournisseur ORDER BY designation ASC');
         $list_id_pieces    = [];
         $list_id_pieces[0] = _AM_PCE_MAG;
-        while ((list($id_piece, $ref, $designation, $nom_fournisseur) = $xoopsDB->fetchRow($req1)) !== false) {
+        while (false !== (list($id_piece, $ref, $designation, $nom_fournisseur) = $xoopsDB->fetchRow($req1))) {
             $list_id_pieces[$id_piece] = $designation . ' - ' . $nom_fournisseur;
         }
 
         // Piece magasin
         ++$npce;
-        if ($quantite == 0) {
+        if (0 == $quantite) {
             $quantite = 1;
         }
 
@@ -507,13 +507,13 @@ if (empty($op)) {
         $form->addElement($pce);
 
         $req4 = $xoopsDB->query('SELECT id, nom  FROM ' . $xoopsDB->prefix('garage_fournisseur') . ' ORDER BY nom');
-        while (($row = $xoopsDB->fetchArray($req4)) !== false) {
+        while (false !== ($row = $xoopsDB->fetchArray($req4))) {
             $fournisseurs[$row['id']] = $row['nom'];
         }
 
         // Piece hors magasin
         ++$npce;
-        if ($quantite1 == 0) {
+        if (0 == $quantite1) {
             $quantite1 = 1;
         }
 
@@ -535,7 +535,7 @@ if (empty($op)) {
 
         //liste des forfaits deja affectés
         $reqf = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('garage_inter_forfait') . ' WHERE id_inter=' . $id_inter);
-        while ((list($idkey, $idinter, $id_forfait, $designation_ff, $ref_fournisseur, $quantite_ff, $tarif_client) = $xoopsDB->fetchRow($reqf)) !== false) {
+        while (false !== (list($idkey, $idinter, $id_forfait, $designation_ff, $ref_fournisseur, $quantite_ff, $tarif_client) = $xoopsDB->fetchRow($reqf))) {
             $nbf     = 1; // compteur pour affichage
             $forfait .= '<tr><td align=left>' . nl2br($designation_ff) . '</td>';
             $forfait .= '<td align=center>' . $quantite_ff . '</td>';
@@ -566,20 +566,20 @@ if (empty($op)) {
         $nbfd         = 0;
         $list_forfait = [];
         $reqfor       = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('garage_forfait') . ' ORDER BY description');
-        while (($row = $xoopsDB->fetchArray($reqfor)) !== false) {
+        while (false !== ($row = $xoopsDB->fetchArray($reqfor))) {
             $nbfd                     = 1;
             $list_forfait[$row['id']] = $row['nom'] . ' - ' . $row['description'] . ' - Prix : ' . $row['tarif'];
         }
 
-        if ($nbfd != 0) {
+        if (0 != $nbfd) {
             $form->insertBreak('<h3><div class="center;">' . _AM_FORFAIT . '</div></h3><br>', 'head');
         }
 
-        if ($nbf != 0) {
+        if (0 != $nbf) {
             $form->insertBreak(_AM_FORFAIT_UTILISE . '<div class="center;"><br>' . $forfait . '</div>', 'head');
         }
 
-        if ($nbfd != 0) {
+        if (0 != $nbfd) {
             $forf = new XoopsFormElementTray('');
             $forf = new XoopsFormSelect(_AM_FORFAIT, 'id_forfait', '', 3);
             $forf->addOptionArray($list_forfait);
@@ -587,29 +587,29 @@ if (empty($op)) {
         }
 
         // traitement du solde et archive
-        if ($solde == 2 || $solde == 1) {
+        if (2 == $solde || 1 == $solde) {
             $etatsolde = 1;
         } else {
             $etatsolde = 0;
         }
-        if ($xoopsModuleConfig['autoriser_solde'] == 1 || $xoopsUser->isAdmin($xoopsModule->mid())) {
+        if (1 == $xoopsModuleConfig['autoriser_solde'] || $xoopsUser->isAdmin($xoopsModule->mid())) {
             $form->addElement(new XoopsFormRadioYN(_AM_INTER_SOLDE, 'solde', $etatsolde));
         }
 
         // si la reparation n'est pas soldée on ne propose pas l'archivage
-        if ($solde != 0) {
-            if ($solde == 2) {
+        if (0 != $solde) {
+            if (2 == $solde) {
                 $archive = 1;
             } else {
                 $archive = 0;
             }
-            if ($xoopsModuleConfig['autoriser_archive'] == 1 || $xoopsUser->isAdmin($xoopsModule->mid())) {
+            if (1 == $xoopsModuleConfig['autoriser_archive'] || $xoopsUser->isAdmin($xoopsModule->mid())) {
                 $form->addElement(new XoopsFormRadioYN(_AM_INTER_ARCHIVE, 'archive', $archive));
             }
         }
 
         // element caches
-        if ($id_inter == 0) {
+        if (0 == $id_inter) {
             $form->addElement(new xoopsFormHidden('id_inter', $id));
         } else {
             $form->addElement(new xoopsFormHidden('id_inter', $id_inter));
@@ -622,7 +622,7 @@ if (empty($op)) {
 
         $pct = round(100 - ($montant_net_repar * 100) / $montant_brut_repar, 0);
 
-        if ($montant_net_repar != 0) {
+        if (0 != $montant_net_repar) {
             $form->insertBreak(_AM_PIED_REPAR, 'head');
             $form->addElement(new xoopsFormLabel(_AM_PCE_BRUT, $montant_brut_repar . ' ' . $xoopsModuleConfig['money']));
             $form->addElement(new xoopsFormLabel(_AM_PCE_REMISE, $remise_repar . ' ' . $xoopsModuleConfig['money'] . ' (soit ' . $pct . '% de remise)'));

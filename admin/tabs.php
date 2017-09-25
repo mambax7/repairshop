@@ -65,7 +65,7 @@ class XoopsTabs
     public function XoopsTabs($style = 'xtabs')
     {
         $this->_style = $style;
-        if ($this->_style != 'xtabs') {
+        if ('xtabs' != $this->_style) {
             $this->_return_style = false;
         }
     }
@@ -121,10 +121,10 @@ class XoopsTabs
      */
     public function setCurrent($name, $set='tabs')
     {
-        if ($set == 'tabs') {
+        if ('tabs' == $set) {
             $this->current_tab = $name;
         }
-        if ($set == 'subs') {
+        if ('subs' == $set) {
             $this->current_sub = $name;
         }
     }
@@ -190,12 +190,12 @@ class XoopsTabs
      */
     public function addSet($set, $name, $link, $label, $weight, $parent=null)
     {
-        if ($set == 'tabs') {
+        if ('tabs' == $set) {
             $this->tabs[$name]['link'] = $link;
             $this->tabs[$name]['label'] = $label;
             $this->tabs[$name]['weight'] = $weight;
             $this->tabs[$name]['name'] = $name;
-        } elseif ($set == 'subs') {
+        } elseif ('subs' == $set) {
             $this->subs[$parent][$name]['link'] = $link;
             $this->subs[$parent][$name]['label'] = $label;
             $this->subs[$parent][$name]['weight'] = $weight;
@@ -258,7 +258,7 @@ class XoopsTabs
 		  <ul>\n";
         foreach ($tabs['tabs'] as $k=>$tab) {
             $html .= "<li";
-            if ($tab['current'] == 1) {
+            if (1 == $tab['current']) {
                 $html .= " id='current'";
             }
             $html .= "><a href='".$tab['link']."'>".$tab['label']."</a></li>\n";

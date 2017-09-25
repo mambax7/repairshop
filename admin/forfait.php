@@ -64,7 +64,7 @@ switch ($op) {
         $tarif       = $_POST['tarif'];
 
         // creation / mise a jour du forfait
-        if ($id == '') {
+        if ('' == $id) {
             $sql = sprintf("INSERT INTO %s (nom, description, tarif) VALUES ('%s', '%s', '%s')", $xoopsDB->prefix('garage_forfait'), $nom_forfait, $description_forfait, $tarif_forfait);
         } else {
             $sql = 'UPDATE ' . $xoopsDB->prefix('garage_forfait') . " SET nom='" . $nom_forfait . "', description='" . $description_forfait . "', tarif='" . $tarif_forfait . "' WHERE id=" . $id;
@@ -74,25 +74,25 @@ switch ($op) {
         $xoopsDB->queryF($sql) || exit('erreur requete :' . $sql . '<br>');
 
         // on recupere la valeur de l'increment
-        if ($id == '') {
+        if ('' == $id) {
             $sql = $xoopsDB->queryF('SELECT max(id) AS maxid FROM ' . $xoopsDB->prefix('garage_forfait'));
-            while ((list($maxid) = $xoopsDB->fetchRow($sql)) !== false) {
+            while (false !== (list($maxid) = $xoopsDB->fetchRow($sql))) {
                 $id = $maxid;
             }
         }
 
         // insertion des pieces selectionnees
-        if ($id_pieces != 0) {
-            if ($tarif == 0) {
+        if (0 != $id_pieces) {
+            if (0 == $tarif) {
                 $reqpx = $xoopsDB->query('SELECT tarif_client FROM ' . $xoopsDB->prefix('garage_pieces') . ' WHERE id=' . $id_pieces);
-                while ((list($tarif_pce) = $xoopsDB->fetchRow($reqpx)) !== false) {
+                while (false !== (list($tarif_pce) = $xoopsDB->fetchRow($reqpx))) {
                     $tarif = $tarif_pce;
                 }
             }
 
-            if ($designation == '') {
+            if ('' == $designation) {
                 $reqdes = $xoopsDB->query('SELECT designation FROM ' . $xoopsDB->prefix('garage_pieces') . ' WHERE id=' . $id_pieces);
-                while ((list($des_piece) = $xoopsDB->fetchRow($reqdes)) !== false) {
+                while (false !== (list($des_piece) = $xoopsDB->fetchRow($reqdes))) {
                     $designation = $des_piece;
                 }
             }
@@ -142,7 +142,7 @@ switch ($op) {
         $res = $xoopsDB->query($sql) || exit('erreur requete :' . $sql . '<br>');
 
         if ($res) {
-            while (($row = $xoopsDB->fetchArray($res)) !== false) {
+            while (false !== ($row = $xoopsDB->fetchArray($res))) {
                 $id          = $row['id'];
                 $nom         = $row['nom'];
                 $description = $row['description'];
@@ -166,7 +166,7 @@ switch ($op) {
         $req1              = $xoopsDB->query('SELECT p.id, p.ref, p.designation, f.nom FROM ' . $xoopsDB->prefix('garage_pieces') . ' p INNER JOIN ' . $xoopsDB->prefix('garage_fournisseur') . ' f ON f.id = p.id_fournisseur ORDER BY designation ASC');
         $list_id_pieces    = [];
         $list_id_pieces[0] = _AM_PCE_MAG;
-        while ((list($id_piece, $ref, $designation, $nom_fournisseur) = $xoopsDB->fetchRow($req1)) !== false) {
+        while (false !== (list($id_piece, $ref, $designation, $nom_fournisseur) = $xoopsDB->fetchRow($req1))) {
             $list_id_pieces[$id_piece] = $designation . ' - ' . $nom_fournisseur;
         }
 
@@ -179,7 +179,7 @@ switch ($op) {
         $pieces_det .= '<th align=center width=100px>' . _AM_PCE_PX . '</th>';
         $pieces_det .= '<th align=center width=100px>' . _AM_ACTION . '</th></tr>';
 
-        while ((list($idkey, $id_forfait, $designation, $quantite, $tarif) = $xoopsDB->fetchRow($reqp)) !== false) {
+        while (false !== (list($idkey, $id_forfait, $designation, $quantite, $tarif) = $xoopsDB->fetchRow($reqp))) {
             $pieces_det .= '<tr>';
             $pieces_det .= '<td align=left>' . $designation . '</td>';
             $pieces_det .= '<td align=center>' . $quantite . '</td>';
@@ -258,7 +258,7 @@ if (empty($op)) {
          . _AM_ACTION
          . "</div></th>\n";
 
-    while ((list($id, $nom, $description, $tarif) = $xoopsDB->fetchRow($result)) !== false) {
+    while (false !== (list($id, $nom, $description, $tarif) = $xoopsDB->fetchRow($result))) {
         $cat[$id] = $id;
 
         echo '<tr>';
